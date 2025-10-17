@@ -27,6 +27,6 @@
     } //cria processos
 
 
-    void imprimir() const{
+    void Processos::imprimir() const{
 
     }
