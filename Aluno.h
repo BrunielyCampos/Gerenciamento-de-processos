@@ -5,8 +5,10 @@
 
 class Aluno : public Pessoa {
     private:
+    string curso;
 
     public:
+
     Aluno();
     
 };
