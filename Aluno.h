@@ -11,7 +11,12 @@ class Aluno : public Pessoa {
 
     Aluno();
     
+    Aluno (string curso);
     
-};
+    string getCurso() const;
 
+    void setCurso (string curso);
+
+   
+};
 #endif
