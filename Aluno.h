@@ -9,6 +9,7 @@ class Aluno : public Pessoa {
     public:
     Aluno();
     
+    
 };
 
 #endif
