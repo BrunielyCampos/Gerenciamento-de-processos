@@ -8,10 +8,10 @@ using namespace std;
 class Pessoa{
 
 private:
-    int numMatricula;
+    double numMatricula;
     string nome;
-    double cpf;
-    double matricula;
+    string cpf;
+    
 
 public:
 
