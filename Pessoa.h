@@ -16,7 +16,7 @@ public:
     Pessoa();
     Pessoa(double numMatricula, string nome, string cpf);
 
-    double gerarNumMatricula(double numMatricula) const;
+    double NumMatricula(double numMatricula) const;
     string Nome(string nome) const;
     string Cpf(string cpf) const;
 

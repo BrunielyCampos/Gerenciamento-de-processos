@@ -5,13 +5,13 @@
 #include "Pessoa.h"
 
 enum AtuacaoProfessor{
-    INFORMÁTICA, ADMINISTRAÇÃO, PROPEDÊUTICA, QUÍMICA
+    INFORMÁTICA = 1, ADMINISTRAÇÃO, PROPEDÊUTICA, QUÍMICA
 };
 
 class Professor : public Pessoa {
     private:
 
-       enum AtuacaoProfessor especialidade;
+    AtuacaoProfessor especialidade;
 
     public:
 
@@ -19,7 +19,7 @@ class Professor : public Pessoa {
     
     int Especialidade(AtuacaoProfessor especialidade) const;
 
-    void setEspecialidade(string especialidade);
+    void imprimir();
 
     
 };

@@ -32,9 +32,9 @@
     int Processos::Hora () const{
 
     }
-    string Processos::Assunto () const{
+    // string Processos::Assunto () const{
 
-    } 
+    // } 
 
    
 
