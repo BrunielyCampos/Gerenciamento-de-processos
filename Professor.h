@@ -4,18 +4,20 @@
 #include <string>
 #include "Pessoa.h"
 
+enum AtuacaoProfessor{
+    INFORMÁTICA, ADMINISTRAÇÃO, PROPEDÊUTICA, QUÍMICA
+};
+
 class Professor : public Pessoa {
     private:
 
-        string especialidade;
+       enum AtuacaoProfessor especialidade;
 
     public:
 
     Professor();
-
-    Professor(string especialidade);
     
-    string getEspecialidade() const;
+    int Especialidade(AtuacaoProfessor especialidade) const;
 
     void setEspecialidade(string especialidade);
 

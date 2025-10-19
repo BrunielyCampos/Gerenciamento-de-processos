@@ -3,6 +3,10 @@
 
 #include "Pessoa.h"
 
+enum NomeCurso{
+    INFORMATICA, QUIMICA, ADM, ADMSUB, TADS, TPQ
+};
+
 class Aluno : public Pessoa {
     private:
     string curso;

@@ -6,26 +6,24 @@
 
 using namespace std;
 
+enum PrioridadeProcessos{ALTA, MEDIA, BAIXA};
+
 class Processos {
     private:
     int idProcesso;
-    int pAlta, pMedia, pBaixa;
     int data, hora;
     string assunto;
-
+    
 
     public:
     Processos();
-    
-    Processos(int id, int pA, int pM, int pB, int d, int h, string assunto);
 
-    int getIdProcessso () const;
-    int getPAlta () const;
-    int getPMedia () const;
-    int getPBaixa () const;
-    int getData () const;
-    int getHora () const;
-    string getAssunto () const; //confirmar se precisa de todos os gets
+    int IdProcessso (int idProcesso) const;
+    int Data () const;
+    int Hora () const;
+    string Assunto () const; //confirmar se precisa de todos os gets
+    int DistribuirPrioridade (enum PrioridadeProcessos()); //recebe alguma referência do poteiro da pilha
+    int DistribuirProcessos();
 
     void abrirProcesso(); //cria processos
 
