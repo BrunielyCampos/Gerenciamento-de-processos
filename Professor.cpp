@@ -7,8 +7,11 @@ using namespace std;
         
     }
     
-    int Professor::Especialidade(AtuacaoProfessor especialidade) const{
-        int opcao;
+     int Professor::Especialidade(AtuacaoProfessor especialidade) const{
+
+          
+/*        
+      int opcao;
 
         cout << "Escolha a opçao que corresponde a sua especialidade: ";
         cout << "1 - INFORMÁTICA \n";
@@ -17,8 +20,8 @@ using namespace std;
         cout << "4 - QUÍMICA \n";
         cin >> opcao;
 
-        especialidade = static_cast<AtuacaoProfessor>(opcao); //Casting de int opcao para enum especialidade.
-    }
+        especialidade = static_cast<AtuacaoProfessor>(opcao); //Casting de int opcao para enum especialidade.*/
+     }
 
     void Professor::imprimir(){
         Pessoa::imprimir();
@@ -39,4 +42,7 @@ using namespace std;
            else if(especialidade == QUÍMICA){
                 cout<< "Química.";
            }
+           else{
+               cout<< "Opção invalida!";
+          }
     }

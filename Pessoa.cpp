@@ -1,26 +1,30 @@
  #include <iostream>
  #include "Pessoa.h"
+ #include <random>
+ #include <ctime>
  
  using namespace std;
 
- double Pessoa::NumMatricula(double numMatricula) const{
-    cout << "Digite a sua matricula: ";
-    cin >> numMatricula; 
+ Pessoa::Pessoa(double numMatricula,string cpf){
+   numMatricula = GerarNumMatricula();
+   cpf = GerarCpf();
  }
-string Pessoa::Nome(string nome) const{
-    cout << "Digite o seu nome: ";
-    cin >> nome;   
-}
-string Pessoa::Cpf(string cpf) const{
-     cout << "Digite o seu CPF: ";
-    cin >> cpf; 
-}
 
-void Pessoa::imprimir(){
+double Pessoa::GerarNumMatricula(){
+  static std::mt19937 gen(std::random_device{}()); 
+  static std::uniform_int_distribution<int> dist(1000000, 9999999);
 
-    cout << "Nome: " << this->nome;
-    cout << "Cpf: " << this->cpf;
-    cout << "Matricula: " << this->numMatricula;
-   
+  return dist(gen);
+ }
 
+string Pessoa::GerarCpf(){
+
+    static mt19937 gen(random_device{}());
+    uniform_int_distribution<> dist(0, 9);
+    string cpf = "";  //atribui os numeros gerados para o cpf.
+
+    for (int i = 0; i <= 11; i++){
+     cpf += to_string(dist(gen));
+    }
+    
 }

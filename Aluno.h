@@ -15,12 +15,8 @@ class Aluno : public Pessoa {
         NomeCurso curso;
 
     public:
-
-    Aluno();
     
-    Aluno (NomeCurso curso);
-    
-    // string getCurso() const;
+    Aluno ();
 
     void setCurso (NomeCurso curso);
 

@@ -19,7 +19,7 @@
         // else(DistribuirPrioridade() == BAIXA){
         //     //AlgumNome = PtrEstruturaSimples3
         // }
-}
+    }
 
     
     int Processos::IdProcessso (int idProcesso) const{
