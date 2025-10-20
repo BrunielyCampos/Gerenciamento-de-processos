@@ -9,7 +9,7 @@ enum NomeCurso{
 
 class Aluno : public Pessoa {
     private:
-    string curso;
+    enum NomeCurso curso;
 
     public:
 

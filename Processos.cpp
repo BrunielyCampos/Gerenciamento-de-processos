@@ -1,10 +1,5 @@
 #include "Processos.h"
 
-
-    void Processos::abrirProcesso(){
-
-    } //cria processos
-
     int Processos::DistribuirPrioridade (enum PrioridadeProcessos()){
 
     } //recebe alguma referência do poteiro da pilha

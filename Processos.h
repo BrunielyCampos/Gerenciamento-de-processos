@@ -13,6 +13,8 @@ class Processos {
     int idProcesso;
     int data, hora;
     string assunto;
+
+    enum PrioridadeProcessos prioridade;
     
 
     public:
@@ -24,6 +26,8 @@ class Processos {
     string Assunto () const; //confirmar se precisa de todos os gets
     int DistribuirPrioridade (enum PrioridadeProcessos()); //recebe alguma referência do poteiro da pilha
     int DistribuirProcessos();
+
+    //criar metodo para pegar a matricula do solicitante
 
     void abrirProcesso(); //cria processos
 
