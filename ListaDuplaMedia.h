@@ -23,7 +23,8 @@ class ListaDuplaMedia {
 
     ~ListaDuplaMedia();
 
-
+    bool isEmpty();
+    void clear();
 };
 
 #endif
