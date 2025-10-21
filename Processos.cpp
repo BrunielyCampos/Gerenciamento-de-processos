@@ -14,7 +14,7 @@
         // else(DistribuirPrioridade() == BAIXA){
         //     //AlgumNome = PtrEstruturaSimples3
         // }
-}
+    }
 
     
     int Processos::IdProcessso (int idProcesso) const{
@@ -27,9 +27,9 @@
     int Processos::Hora () const{
 
     }
-    string Processos::Assunto () const{
+    // string Processos::Assunto () const{
 
-    } 
+    // } 
 
    
 

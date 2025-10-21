@@ -3,23 +3,24 @@
 
 #include "Pessoa.h"
 
+using std::cout;
+using std::cin;
+
 enum NomeCurso{
-    INFORMATICA, QUIMICA, ADM, ADMSUB, TADS, TPQ
+    INFORMATICA = 1, QUIMICA, ADM, ADMSUB, TADS, TPQ
 };
 
 class Aluno : public Pessoa {
     private:
-    enum NomeCurso curso;
+    string curso;
 
     public:
-
-    Aluno();
     
-    Aluno (string curso);
-    
-    string getCurso() const;
+    Aluno ();
 
-    void setCurso (string curso);
+    void setCurso (NomeCurso curso);
+
+    void imprimir();
 
    
 };
