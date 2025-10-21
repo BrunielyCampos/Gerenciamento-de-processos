@@ -12,7 +12,7 @@ enum NomeCurso{
 
 class Aluno : public Pessoa {
     private:
-        NomeCurso curso;
+    string curso;
 
     public:
     

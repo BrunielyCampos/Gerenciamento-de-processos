@@ -12,6 +12,7 @@ class Processos {
     private:
     int idProcesso;
     int data, hora;
+    string assunto;
     
 
     public:
@@ -23,6 +24,9 @@ class Processos {
     void abrirProcesso(); //cria processos 
     int DistribuirPrioridade (enum PrioridadeProcessos()); //recebe alguma referência do poteiro da pilha
     int DistribuirProcessos();
+
+    void abrirProcesso(); //cria processos
+
     void imprimir() const;
 
 };
