@@ -1,18 +1,42 @@
 #include "ListaDuplaMedia.h"
 
 ListaDuplaMedia::ListaDuplaMedia(){
-    head = nullptr;
-    tail = nullptr;
+    this->head = this->tail = nullptr;
+    this->lenght = 0;
+}
+
+ListaDuplaMedia::ListaDuplaMedia(const ListaDuplaMedia & list){
+
 }
 
 ListaDuplaMedia::~ListaDuplaMedia(){
 
 }
 
-bool isEmpty(){
+bool ListaDuplaMedia::isEmpty(){
 
 }
 
-void clear(){
+int ListaDuplaMedia::getLenght() const{
 
+}
+
+void ListaDuplaMedia::clear(){
+
+}
+
+void ListaDuplaMedia::print(Ordem ordem) const{
+
+}
+
+const Node * ListaDuplaMedia::busca(int processo) const{
+
+}
+
+bool ListaDuplaMedia::insert(int processo){
+
+}
+
+bool ListaDuplaMedia::remove(int processo){
+    
 }
