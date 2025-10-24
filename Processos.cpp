@@ -24,14 +24,16 @@
     int Processos::Data () const{
 
     }
-    int Processos::Hora () const{
+    // int Processos::Hora () const{
 
-    }
+    // }
     // string Processos::Assunto () const{
 
     // } 
 
-   
+   void Processos::abrirProcesso(){
+    
+   }
 
 
     void Processos::imprimir() const{
