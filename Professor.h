@@ -2,11 +2,10 @@
 #define _PROFESSOR_HPP_
 
 #include <string>
-#include <random>
 #include "Pessoa.h"
 
 enum AtuacaoProfessor{
-    INFORMATICA = 1, ADMINISTRACAO, PROPEDEUTICA, QUIMICA
+    INFORMÁTICA = 1, ADMINISTRAÇÃO, PROPEDÊUTICA, QUÍMICA
 };
 
 class Professor : public Pessoa {
@@ -18,9 +17,9 @@ class Professor : public Pessoa {
 
     Professor();
     
-    int Especialidade(AtuacaoProfessor especialidade);
+    int Especialidade(AtuacaoProfessor especialidade) const;
 
-    void DefEspecialidade();
+    void imprimir();
 
     
 };
