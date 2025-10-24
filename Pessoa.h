@@ -17,8 +17,6 @@ public:
 
     double GerarNumMatricula();
     string GerarCpf();
-
-    void Imprimir();
 };
 
 #endif

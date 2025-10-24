@@ -23,7 +23,8 @@ class Processos {
 
     int IdProcessso (int idProcesso) const;
     int Data () const;
-    //int Hora () const;
+    int Hora () const;
+    void abrirProcesso(); //cria processos 
     int DistribuirPrioridade (enum PrioridadeProcessos()); //recebe alguma referência do poteiro da pilha
     int DistribuirProcessos();
 
