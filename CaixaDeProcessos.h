@@ -2,17 +2,18 @@
 #define _CAIXA_PROCESSOS_
 
 
-class Pilha {
+class CaixaDeProcessos {
     public:
 
+
+
     private:
-    Pilha();
+
+    CaixaDeProcessos();
 
     void empilhar();
     void desempilhar();
     void vazia();
     void exibir();
 };
-
-
 #endif

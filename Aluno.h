@@ -1,10 +1,11 @@
 #ifndef _ALUNO_HPP_
 #define _ALUNO_HPP_
 
-#include "Pessoa.h"
 
-using std::cout;
-using std::cin;
+#include "Pessoa.h"
+#include <vector>
+
+using namespace std;
 
 enum NomeCurso{
     INFORMATICA = 1, QUIMICA, ADM, ADMSUB, TADS, TPQ
@@ -12,16 +13,21 @@ enum NomeCurso{
 
 class Aluno : public Pessoa {
     private:
-    string curso;
-
+    
+    enum NomeCurso curso;
+    vector<Aluno> ListNomesAlunos; 
+    string nome;
+        
     public:
     
     Aluno ();
+    Aluno();
+    Aluno(string nome);
 
-    void setCurso (NomeCurso curso);
+    vector<Aluno> ListNomesAlunos(vector<Aluno> ListNomesAlunos);
 
-    void imprimir();
+    string getNomeCurso() const;
 
-   
+    int DefCurso ();
 };
 #endif
