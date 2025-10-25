@@ -3,19 +3,10 @@
     int Processos::DistribuirPrioridade (enum PrioridadeProcessos()){
 
     } //recebe alguma referência do poteiro da pilha
-    int Processos::DistribuirProcessos(){
-        // if(DistribuirPrioridade() == ALTA){
-		// //AlgumNome = PtrEstruturaDupla1
-        // }
 
-        // else if(DistribuirPrioridade() == MEDIA){
-        //     //AlgumNome = PtrEstruturaDupla2
-        // }
-        // else(DistribuirPrioridade() == BAIXA){
-        //     //AlgumNome = PtrEstruturaSimples3
-        // }
-    }
+    // void Processos::abrirProcesso(){
 
+    // } //cria processos
     
     int Processos::IdProcessso (int idProcesso) const{
         
