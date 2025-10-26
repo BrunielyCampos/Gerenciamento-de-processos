@@ -1,5 +1,6 @@
 #ifndef _PROCESSOS_H_
 #define _PROCESSOS_H_
+#include "CaixaDeProcessos.h"
 
 #include "Pessoa.h"
 #include <string>
@@ -15,7 +16,7 @@ class Processos {
     
     string assunto;
 
-    enum PrioridadeProcessos prioridade;
+    int * prtProcessos;
     
 
     public:
@@ -25,8 +26,7 @@ class Processos {
     int Data () const;
     int Hora () const;
     void abrirProcesso(); //cria processos 
-    int DistribuirPrioridade (enum PrioridadeProcessos()); //recebe alguma referência do poteiro da pilha
-    int DistribuirProcessos();
+    int DistribuirPrioridade (TipoProcesso p); //recebe alguma referência do poteiro da pilha.
 
     //criar metodo para pegar a matricula do solicitante
 

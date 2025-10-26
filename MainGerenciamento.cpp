@@ -1,38 +1,30 @@
 #include <iostream>
+#include "Pessoa.h"
+#include "Aluno.h"
 #include "Processos.h"
 
 using namespace std;
 
-<<<<<<< Updated upstream
-void Processos::abrirProcesso(){
-=======
-//  int Processos::DistribuirProcessos(){
-//         // if(DistribuirPrioridade() == ALTA){
-// 		// //AlgumNome = PtrEstruturaDupla1
-//         // }
+/*
+    void Processos::abrirProcesso(){
+        int Processos::DistribuirProcessos(){
+            if(DistribuirPrioridade() == ALTA){
+            //AlgumNome = PtrEstruturaDupla1
+            }
 
-//         // else if(DistribuirPrioridade() == MEDIA){
-//         //     //AlgumNome = PtrEstruturaDupla2
-//         // }
-//         // else(DistribuirPrioridade() == BAIXA){
-//         //     //AlgumNome = PtrEstruturaSimples3
-//         // }
-//     }
-
->>>>>>> Stashed changes
-
+            else if(DistribuirPrioridade() == MEDIA){
+                //AlgumNome = PtrEstruturaDupla2
+            }
+            else(DistribuirPrioridade() == BAIXA){
+                //AlgumNome = PtrEstruturaSimples3
+            }
+        }
     } //cria processos
+*/
 
 int main(){
-<<<<<<< Updated upstream
-=======
 
     Aluno aluno;
     Pessoa pessoa; 
-
-
-    
-
->>>>>>> Stashed changes
     
 }

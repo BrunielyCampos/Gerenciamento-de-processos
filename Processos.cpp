@@ -1,6 +1,6 @@
 #include "Processos.h"
 
-    int Processos::DistribuirPrioridade (enum PrioridadeProcessos()){
+    int Processos::DistribuirPrioridade (TipoProcesso p){
 
     } //recebe alguma referência do poteiro da pilha
 
@@ -15,12 +15,10 @@
     int Processos::Data () const{
 
     }
+
     int Processos::Hora () const{
 
     }
-    // string Processos::Assunto () const{
-
-    // } 
 
    
 
