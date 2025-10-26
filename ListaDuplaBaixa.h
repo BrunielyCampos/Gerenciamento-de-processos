@@ -7,10 +7,10 @@
 
 using std::cout;
 
-struct Node{
-    Node * next;
+struct NodeBaixa{
+    NodeBaixa * next;
     int processo; //processo
-    Node * previous;
+    NodeBaixa * previous;
 };
 
 enum Ordem{
@@ -21,9 +21,9 @@ enum Ordem{
 
 class ListaDuplaBaixa {
     private:
-    Node * head;
-    Node * tail;
-    int lenght;
+    NodeBaixa * head;
+    NodeBaixa * tail;
+    int length;
 
     public:
     ListaDuplaBaixa();
@@ -37,11 +37,9 @@ class ListaDuplaBaixa {
     void clear();
     void print(Ordem ordem = Ordem::PRAFRENTE) const;
 
-    const Node * busca(int processo) const;
+    const NodeBaixa * busca(int processo) const;
     bool insert(int processo);
     bool remove(int processo);
-    
-    void concatenate (const ListaDuplaBaixa & list);
 
     /*const ListaDuplaBaixa & operador=(const ListaDuplaBaixa & list);
     const ListaDuplaBaixa & operador+(const ListaDuplaBaixa & list);
