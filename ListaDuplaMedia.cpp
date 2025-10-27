@@ -2,7 +2,7 @@
 
 ListaDuplaMedia::ListaDuplaMedia(){
     this->head = this->tail = nullptr;
-    this->lenght = 0;
+    this->length = 0;
 }
 
 ListaDuplaMedia::ListaDuplaMedia(const ListaDuplaMedia & list){
@@ -29,7 +29,7 @@ void ListaDuplaMedia::print(Ordem ordem) const{
 
 }
 
-const Node * ListaDuplaMedia::busca(int processo) const{
+const NodeMedia * ListaDuplaMedia::busca(int processo) const{
 
 }
 
