@@ -21,7 +21,7 @@ using std::cout;
     }
 
     void CaixaDeProcessos::Desempilhar(void (*DistribuirPrioridade)(TipoProcesso)){
-        if (isEmpity()){               
+        if (isEmpty()){               
             cout<< "A Caixa de processos está VAZIA!";
             return;
         }
@@ -34,6 +34,6 @@ using std::cout;
         temp = nullptr;
     }
 
-    bool CaixaDeProcessos::isEmpity(){
+    bool CaixaDeProcessos::isEmpty(){
         return top == nullptr;
     }

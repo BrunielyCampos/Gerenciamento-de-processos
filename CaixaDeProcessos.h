@@ -21,6 +21,6 @@ class CaixaDeProcessos {
 
     void empilhar(TipoProcesso novoProcesso);
     void Desempilhar(void (*DistribuirPrioridade)(TipoProcesso));
-    bool isEmpity();
+    bool isEmpty();
 };
 #endif

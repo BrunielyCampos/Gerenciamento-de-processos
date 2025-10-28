@@ -7,23 +7,6 @@
 
 using namespace std;
 
-/*
-    void Processos::abrirProcesso(){
-        int Processos::DistribuirProcessos(){
-            if(DistribuirPrioridade() == ALTA){
-            //AlgumNome = PtrEstruturaDupla1
-            }
-
-            else if(DistribuirPrioridade() == MEDIA){
-                //AlgumNome = PtrEstruturaDupla2
-            }
-            else(DistribuirPrioridade() == BAIXA){
-                //AlgumNome = PtrEstruturaSimples3
-            }
-        }
-    } //cria processos
-*/
-
 int main(){
     
     srand(time(0));
@@ -48,6 +31,7 @@ int main(){
     else if(tipoUser == 2){
         for (int i = 0; i < sizeof(listNomeAlunos)/sizeof(Aluno); i++){   
             listNomeAlunos[i] = new Aluno;
+            listNomeAlunos[i]->ListaNomeAlunos();
             listNomeAlunos[i]->DefCurso();   
             listNomeAlunos[i]->GerarCpf();
             listNomeAlunos[i]->GerarNumMatricula();
