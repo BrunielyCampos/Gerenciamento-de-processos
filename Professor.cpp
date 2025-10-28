@@ -27,7 +27,18 @@ using namespace std;
           return opcaoProf;
      } //Em um laço for, a partir de um radom pegando as posiçoes do vetor, iremos atribuir um aluno a um processo, contendo os numéros de mátriculas e cpf gerandos alatóriamente "Montando um professor".
 
-     vector<Professor> ListaNomeProf(vector<Professor> listaProf);
+     vector<Professor> Professor::ListaNomeProf(vector<Professor> listaProf){
+   
+         listaProf.push_back(Professor{"Leandro Luttiane da silva linhares"});
+         listaProf.push_back(Professor{"Carlos Henrique Moreira"});
+         listaProf.push_back(Professor{" Fernanda Alves Ribeiro"});
+         listaProf.push_back(Professor{"Alisson da Silva Rodrigues"});
+         listaProf.push_back(Professor{"Patrícia Duarte Lima"});
+         listaProf.push_back(Professor{"Thiago Monteiro da Silva"});
+         listaProf.push_back(Professor{"Luciana Pereira Costa"});
+         listaProf.push_back(Professor{"Rafael Peixoto de Moraes Pereira"});
+
+     }
 
      void Professor::DefEspecialidade(){
 

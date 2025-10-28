@@ -27,7 +27,7 @@
 
     }
 
-    vector<Aluno> ListNomesAlunos(vector<Aluno> ListNomesAlunos){
+    vector<Aluno> Aluno::ListNomesAlunos(vector<Aluno> ListNomesAlunos){
           
         ListNomesAlunos.push_back(Aluno{"Ana Beatriz Ferreira"});
         ListNomesAlunos.push_back(Aluno{"Mariana Oliveira"});

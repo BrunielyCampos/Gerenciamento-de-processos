@@ -32,7 +32,6 @@ using std::cout;
         delete temp;
         DistribuirPrioridade(elemento);
         temp = nullptr;
-
     }
 
     bool CaixaDeProcessos::isEmpity(){

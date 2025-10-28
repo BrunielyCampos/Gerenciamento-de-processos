@@ -1,7 +1,7 @@
 #include "Processos.h"
 
     int Processos::DistribuirPrioridade (TipoProcesso p){
-
+        
     } //recebe alguma referência do poteiro da pilha
 
     // void Processos::abrirProcesso(){
