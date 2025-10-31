@@ -13,6 +13,7 @@ class Processos {
     private:
     int idProcesso;
     int data, hora;
+    int nptProcessos, npaProcessos;
     
     string assunto;
 
@@ -23,14 +24,14 @@ class Processos {
     Processos();
 
     int IdProcessso (int idProcesso) const;
-    int Data () const;
-    int Hora () const;
-    void abrirProcesso(); //cria processos 
+    int gerarNPT();
+    int gerarNPA();
+    int Data (int processo) const;
+    int Hora (int processo) const;
+    void abrirProcesso(int nptProcessos, int npaProcessos); //cria processos 
     int DistribuirPrioridade (TipoProcesso p); //recebe alguma referência do poteiro da pilha.
 
     //criar metodo para pegar a matricula do solicitante
-
-    void abrirProcesso(); //cria processos
 
     void imprimir() const;
 

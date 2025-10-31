@@ -15,8 +15,7 @@ int main(){
     
     srand(time(0));
 
-    int tipoUser = rand() % 3;
-
+    int tipoUser = rand() % 2 + 1;  // Gera apenas 1 ou 2
 
         if(tipoUser == 1){
             aluno->imprimirAluno();
@@ -26,5 +25,5 @@ int main(){
             professor->ImprimirProfessor();
         }
 
-    
+        
 }
