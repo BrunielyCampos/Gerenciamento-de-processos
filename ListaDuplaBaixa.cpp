@@ -5,10 +5,6 @@ ListaDuplaBaixa::ListaDuplaBaixa(){
     this->length = 0;
 }
 
-ListaDuplaBaixa::ListaDuplaBaixa(const ListaDuplaBaixa & list){ //verificar se precisar implementar algo no construtor
-
-}
-
 ListaDuplaBaixa::~ListaDuplaBaixa(){
     this->clear();
 }
@@ -62,31 +58,24 @@ const NodeBaixa * ListaDuplaBaixa::busca(int processo) const{
 }
 
 bool ListaDuplaBaixa::insert(int processo){
-    //verificar se precisa de lógica para liberar a memoria alocada
-    NodeBaixa * current = this->head;
 
-    while(current != nullptr && current->processo < processo){
-        current = current->next;
-    }
+    NodeBaixa * newNode = new NodeBaixa();
+    newNode->processo = processo;
+    newNode->next = nullptr;
+    newNode->previous = nullptr;
 
-    if(current != nullptr && current-> processo == processo){
-        return false;
-    }else{
-        NodeBaixa * newNode = new NodeBaixa();
-        newNode->processo = processo;
-
-        if(current == this->head){
-            newNode->next = this->head;
-            this->head = newNode;
-            newNode->previous = nullptr;
-            if(newNode->next != nullptr){
-                newNode->next->previous = newNode;
-            }else{
-                this->tail = newNode;
-            }
-        }
+    if(isEmpty){
+        head = tail = newNode;
+        length++;
         return true;
     }
+
+    tail->next = newNode;
+    newNode->previous = tail;
+    tail = newNode;
+    length++;
+    return true;
+
 }
 
 bool ListaDuplaBaixa::remove(int processo){
@@ -101,7 +90,7 @@ bool ListaDuplaBaixa::remove(int processo){
     }
 
     if(current == nullptr){
-        cout << "Valor nao encontrado" << "\n";
+        cout << "Processo nao encontrado" << "\n";
         return false;
     }
 

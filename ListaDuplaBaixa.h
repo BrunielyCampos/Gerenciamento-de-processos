@@ -1,7 +1,7 @@
 #ifndef _LISTADPULABAIXA_H_
 #define _LISTADUPLABAIXA_H_
 
-//confirmar se vai herdar alguma classe
+#include "Processos.h"
 
 #include <iostream>
 
@@ -27,7 +27,6 @@ class ListaDuplaBaixa {
 
     public:
     ListaDuplaBaixa();
-    ListaDuplaBaixa(const ListaDuplaBaixa & list);
 
     ~ListaDuplaBaixa();
 
@@ -41,9 +40,6 @@ class ListaDuplaBaixa {
     bool insert(int processo);
     bool remove(int processo);
 
-    /*const ListaDuplaBaixa & operador=(const ListaDuplaBaixa & list);
-    const ListaDuplaBaixa & operador+(const ListaDuplaBaixa & list);
-    */
 };
 
 #endif
