@@ -24,6 +24,6 @@ class Professor : public Pessoa {
 
         string DefEspecialidade();
 
-        void Imprimir();
+        void ImprimirProfessor();
 };
 #endif

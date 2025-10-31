@@ -8,14 +8,14 @@ using namespace std;
 class Pessoa{
 
 private:
-    double numMatricula;
+    int numMatricula;
     string cpf;
     
 public:
     Pessoa();
-    Pessoa(double numMatricula, string cpf);
+    Pessoa(int numMatricula, string cpf);
 
-    double GerarNumMatricula();
+    int GerarNumMatricula();
     string GerarCpf();
 };
 

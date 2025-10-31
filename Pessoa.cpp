@@ -5,7 +5,7 @@
  
  using namespace std;
 
- Pessoa::Pessoa(double numMatricula,string cpf){
+ Pessoa::Pessoa(int numMatricula, string cpf){
    numMatricula = GerarNumMatricula();
    cpf = GerarCpf();
  }
@@ -14,9 +14,9 @@
 
   }
 
-  double Pessoa::GerarNumMatricula(){
-  static std::mt19937 gen(std::random_device{}()); 
-  static std::uniform_int_distribution<int> dist(1000000, 9999999);
+  int Pessoa::GerarNumMatricula(){
+    static mt19937 gen(random_device{}()); 
+    static uniform_int_distribution<int> dist(1000000, 9999999);
 
   return dist(gen);
  }
@@ -31,4 +31,5 @@ string Pessoa::GerarCpf(){
      cpf += to_string(dist(gen));
     }
     
+    return cpf;
 }

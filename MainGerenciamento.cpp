@@ -8,7 +8,7 @@
 using namespace std;
 
 int main(){
-    system("cls");
+    // system("cls");
 
     Aluno * aluno = new Aluno();
     Professor * professor = new Professor();
@@ -23,7 +23,7 @@ int main(){
         }
 
         else if(tipoUser == 2){
-            professor->Imprimir();
+            professor->ImprimirProfessor();
         }
 
     

@@ -4,29 +4,31 @@
 #include <vector>
 #include "Professor.h"
 
+using namespace std;
+
 Professor::Professor() : especialidade(AtuacaoProfessor::P_INFORMATICA) {
 }
 
 int Professor::Especialidade(){
-    std::random_device rd;
-    static std::mt19937 gen(rd());
-    std::uniform_int_distribution<int> distrib(0, static_cast<int>(AtuacaoProfessor::P_QUIMICA));
+    random_device rd;
+    static mt19937 gen(rd());
+    uniform_int_distribution<int> distrib(0, static_cast<int>(AtuacaoProfessor::P_QUIMICA));
     int opcaoProf = distrib(gen);
     this->especialidade = static_cast<AtuacaoProfessor>(opcaoProf);
     return opcaoProf;
 }
 
    string Professor::ListaNomeProf(){
-    std::vector<std::string> listaProf = {
+        vector<string> listaProf = {
         "Leandro Luttiane da silva linhares", "Carlos Henrique Moreira",
         "Fernanda Alves Ribeiro", "Alisson da Silva Rodrigues",
         "Patrícia Duarte Lima", "Thiago Monteiro da Silva",
         "Rafael Peixoto de Moraes Pereira", "Luciana Pereira Costa"
     };
 
-    std::random_device rd;
-    std::mt19937 randomEngine(rd());
-    std::uniform_int_distribution<size_t> dist(0, listaProf.size() - 1);
+    random_device rd;
+    mt19937 randomEngine(rd());
+    uniform_int_distribution<size_t> dist(0, listaProf.size() - 10);
     size_t idx = dist(randomEngine);
     return listaProf[idx];
 }
@@ -41,7 +43,7 @@ std::string Professor::DefEspecialidade(){
     }
 }
 
-void Professor::Imprimir(){
+void Professor::ImprimirProfessor(){
       string nome = ListaNomeProf();
       cout << "Nome do professor: " << nome <<endl;
       cout << "Especialidade: " << DefEspecialidade() << endl;
