@@ -4,30 +4,25 @@
 
 #include "Pessoa.h"
 #include <vector>
+#include <string>
 
 using namespace std;
 
-enum NomeCurso{
-    INFORMATICA = 1, QUIMICA, ADM, ADMSUB, TADS, TPQ
+enum NomeCurso {
+    A_INFORMATICA, A_QUIMICA, A_ADM, A_ADMSUB, A_TADS, A_TPQ
 };
 
 class Aluno : public Pessoa {
     private:
-    
-    enum NomeCurso curso;
-    vector<Aluno> ListNomesAlunos; 
-    string nome;
+        NomeCurso curso;           
+        string nome;         
         
     public:
-    
-    Aluno ();
-    Aluno();
-    Aluno(string nome);
-
-    vector<Aluno> ListNomesAlunos(vector<Aluno> ListNomesAlunos);
-
-    string getNomeCurso() const;
-
-    int DefCurso ();
+        Aluno();
+        vector<std::string> ListNomesAlunos();  // Adicionado std::
+        string DefNomeCurso() const;            // Adicionado std::
+        int DefCurso();
+        void imprimirAluno();
 };
+
 #endif

@@ -2,34 +2,28 @@
 #define _PROFESSOR_HPP_
 
 #include <string>
-#include <random>
-
 #include "Pessoa.h"
 
+using namespace std;
+
 enum AtuacaoProfessor{
-    INFORMATICA = 1, ADMINISTRACAO, PROPEDEUTICA, QUIMICA
+    P_INFORMATICA, P_ADMINISTRACAO, P_PROPEDEUTICA, P_QUIMICA
 };
 
 class Professor : public Pessoa {
     private:
-
-    AtuacaoProfessor especialidade;
-
-    vector<Professor> listaProf; 
-    string nomeProf;
+        AtuacaoProfessor especialidade;  
 
     public:
+        Professor();
 
-    Professor();
+        int Especialidade();
 
-    Professor(string nomeProf);
-    
-    int Especialidade(AtuacaoProfessor especialidade);
+        // agora retorna um único nome (string), não um vetor
+        string ListaNomeProf();
 
-    vector<Professor> ListaNomeProf(vector<Professor> listaProf);
+        string DefEspecialidade();
 
-    void DefEspecialidade();
-
-    
+        void Imprimir();
 };
 #endif

@@ -16,7 +16,7 @@ using std::cout;
         novo->proximo = top; //Faz o novo nó apontar para o nó que antes estava no topo da pilha.
         top = novo; //agora o top aponta para o novoProcesso
 
-        //o processo de empilhar consiste em criar um novo espaço dentro da pilha
+        //o processo de empilhar consiste em criar um novo espaco dentro da pilha
 
     }
 

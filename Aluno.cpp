@@ -1,15 +1,14 @@
-    #include "Aluno.h"
-    #include <iostream>
-    #include<random>
+#include "Aluno.h"
+#include <iostream>
+#include <random>
+#include <ctime>
+#include <vector>
+#include <string>
 
-    using namespace std;
+using namespace std;
 
     Aluno::Aluno(){  
         DefCurso();
-    }
-
-    Aluno::Aluno(string nome){
-        this->nome;
     }
 
     int Aluno::DefCurso(){
@@ -17,60 +16,67 @@
         random_device rd;
         static mt19937 gen(rd());
 
-        uniform_int_distribution<int> distrib(1, static_cast<int>(NomeCurso::TPQ));
+        uniform_int_distribution<int> distrib(0, static_cast<int>(NomeCurso::A_TPQ));
     
         int opcaoCurso = distrib(gen);
-
         this->curso = static_cast<NomeCurso>(opcaoCurso); 
-  
         return opcaoCurso;
-
     }
 
-    vector<Aluno> Aluno::ListNomesAlunos(vector<Aluno> ListNomesAlunos){
-          
-        ListNomesAlunos.push_back(Aluno{"Ana Beatriz Ferreira"});
-        ListNomesAlunos.push_back(Aluno{"Mariana Oliveira"});
-        ListNomesAlunos.push_back(Aluno{"Pedro Henrique Santos"});
-        ListNomesAlunos.push_back(Aluno{"Camila Souza"});
-        ListNomesAlunos.push_back(Aluno{"João Victor Lima"});
-        ListNomesAlunos.push_back(Aluno{"Isabela Rocha"});
-        ListNomesAlunos.push_back(Aluno{"Rafael Costa"});
-        ListNomesAlunos.push_back(Aluno{"Larissa NunegetNomeAluno"});
-        ListNomesAlunos.push_back(Aluno{"Gabriel Martins"});
+    vector<string> Aluno::ListNomesAlunos(){
+        vector<string> listNomesAlunos = { 
+            "Ana Beatriz Ferreira", 
+            "Mariana Oliveira", 
+            "Pedro Henrique Santos", 
+            "Camila Souza", 
+            "Joao Victor Lima", 
+            "Isabela Rocha", 
+            "Rafael Costa", 
+            "Larissa Nunes", 
+            "Gabriel Martins"
+        }; 
+        
+        random_device rd;
+        mt19937 randomEngine(rd());
+        uniform_int_distribution<size_t> dist(0, listNomesAlunos.size() - 1);
+        size_t idx = dist(randomEngine);
+
+        cout << "Nome: " << listNomesAlunos[idx] << endl;
+        return listNomesAlunos;
+       
     }
 
-    string Aluno::getNomeCurso() const {
+    string Aluno::DefNomeCurso() const {
 
         switch (this->curso){
 
-        case NomeCurso::INFORMATICA:
-           cout << "Informatica";
-        break;
+        case NomeCurso:: A_INFORMATICA:
+           return "Informatica";
 
-        case NomeCurso::QUIMICA:
-           cout << "Quimica";
-        break;
+        case NomeCurso:: A_QUIMICA:
+           return "Quimica";
 
-        case NomeCurso::ADM:
-           cout << "Administração.";
-        break;
+        case NomeCurso:: A_ADM:
+           return "Administracao";
 
-        case NomeCurso::ADMSUB:
-           cout << "Adminidtração (Subsequente)";
-        break;
+        case NomeCurso:: A_ADMSUB:
+           return "Administracao (Subsequente)";
 
-        case NomeCurso::TADS:
-           cout << "Análise e desenvolvimento de sistemas";
-        break;
+        case NomeCurso:: A_TADS:
+           return "Análise e desenvolvimento de sistemas";
 
-        case NomeCurso::TPQ:
-           cout << "Tecnologia em processos Quimicos";
-        break;
+        case NomeCurso:: A_TPQ:
+           return "Tecnologia em processos Quimicos";
         
         default:
-            cout<<"O curso não faz parte do campus ou não existe!";
-            
-            break;
+            return "O curso nao faz parte do campus ou nao existe!";
         }
+    }
+
+    void Aluno::imprimirAluno(){
+        cout << "Nome do aluno: " << nome << endl;
+        cout << "Curso: " << DefNomeCurso() << endl;
+        cout << "CPF: " << GerarCpf() << endl;
+        cout << "Matricula: " << GerarNumMatricula() << endl;
+        cout << endl;
     }

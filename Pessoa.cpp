@@ -10,7 +10,11 @@
    cpf = GerarCpf();
  }
 
-double Pessoa::GerarNumMatricula(){
+  Pessoa::Pessoa(){
+
+  }
+
+  double Pessoa::GerarNumMatricula(){
   static std::mt19937 gen(std::random_device{}()); 
   static std::uniform_int_distribution<int> dist(1000000, 9999999);
 

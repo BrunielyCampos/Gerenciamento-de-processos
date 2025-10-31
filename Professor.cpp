@@ -1,65 +1,51 @@
-#include "Professor.h"
 #include <iostream>
 #include <string>
+#include <random>
+#include <vector>
+#include "Professor.h"
 
-using namespace std;
-    
-     Professor::Professor(){
-          
-     }
-    
-     Professor::Professor(string nomeProf){
-          this->nomeProf;
-     }
-    
-     int Professor::Especialidade(AtuacaoProfessor especialidade){
-          random_device rd;
-          static mt19937 gen(rd());
-          
-         
+Professor::Professor() : especialidade(AtuacaoProfessor::P_INFORMATICA) {
+}
 
-          uniform_int_distribution<int> distrib(1, static_cast<int>(AtuacaoProfessor::QUIMICA));
+int Professor::Especialidade(){
+    std::random_device rd;
+    static std::mt19937 gen(rd());
+    std::uniform_int_distribution<int> distrib(0, static_cast<int>(AtuacaoProfessor::P_QUIMICA));
+    int opcaoProf = distrib(gen);
+    this->especialidade = static_cast<AtuacaoProfessor>(opcaoProf);
+    return opcaoProf;
+}
 
-          int opcaoProf = distrib(gen);
+   string Professor::ListaNomeProf(){
+    std::vector<std::string> listaProf = {
+        "Leandro Luttiane da silva linhares", "Carlos Henrique Moreira",
+        "Fernanda Alves Ribeiro", "Alisson da Silva Rodrigues",
+        "Patrícia Duarte Lima", "Thiago Monteiro da Silva",
+        "Rafael Peixoto de Moraes Pereira", "Luciana Pereira Costa"
+    };
 
-          this->especialidade = static_cast<AtuacaoProfessor>(opcaoProf);
-          
-          return opcaoProf;
-     } //Em um laço for, a partir de um radom pegando as posiçoes do vetor, iremos atribuir um aluno a um processo, contendo os numéros de mátriculas e cpf gerandos alatóriamente "Montando um professor".
+    std::random_device rd;
+    std::mt19937 randomEngine(rd());
+    std::uniform_int_distribution<size_t> dist(0, listaProf.size() - 1);
+    size_t idx = dist(randomEngine);
+    return listaProf[idx];
+}
 
-     vector<Professor> Professor::ListaNomeProf(vector<Professor> listaProf){
-   
-         listaProf.push_back(Professor{"Leandro Luttiane da silva linhares"});
-         listaProf.push_back(Professor{"Carlos Henrique Moreira"});
-         listaProf.push_back(Professor{" Fernanda Alves Ribeiro"});
-         listaProf.push_back(Professor{"Alisson da Silva Rodrigues"});
-         listaProf.push_back(Professor{"Patrícia Duarte Lima"});
-         listaProf.push_back(Professor{"Thiago Monteiro da Silva"});
-         listaProf.push_back(Professor{"Luciana Pereira Costa"});
-         listaProf.push_back(Professor{"Rafael Peixoto de Moraes Pereira"});
-
-     }
-
-     void Professor::DefEspecialidade(){
-
-        cout<< "Especialidede do professor: ";
-
-          
-        switch (this->especialidade){
-        case AtuacaoProfessor::INFORMATICA:
-           cout<< "Informatica.";
-        break;
-        case AtuacaoProfessor::ADMINISTRACAO:
-           cout<< "Administração.";
-        break;
-        case AtuacaoProfessor::PROPEDEUTICA:
-           cout<< "Propedeutica.";
-        break;
-        case AtuacaoProfessor::QUIMICA:
-           cout<< "Quimica.";
-        break;
-        default:
-          cout<<"Atuação invalida, não está presente no campus ou não existe!";
-          break;
-        }
+std::string Professor::DefEspecialidade(){
+    switch (this->especialidade){
+        case AtuacaoProfessor::P_INFORMATICA:     return "Informatica.";
+        case AtuacaoProfessor::P_ADMINISTRACAO:   return "Administracao.";
+        case AtuacaoProfessor::P_PROPEDEUTICA:   return "Propedeutica.";
+        case AtuacaoProfessor::P_QUIMICA:         return "Quimica.";
+        default:                                  return "Atuacao invalida, nao esta presente no campus ou nao existe!";
     }
+}
+
+void Professor::Imprimir(){
+      string nome = ListaNomeProf();
+      cout << "Nome do professor: " << nome <<endl;
+      cout << "Especialidade: " << DefEspecialidade() << endl;
+      cout << "CPF: " << GerarCpf() << endl;
+      cout << "Matricula: " << GerarNumMatricula() << endl;
+      cout << endl;
+}
