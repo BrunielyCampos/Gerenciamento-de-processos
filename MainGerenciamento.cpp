@@ -1,11 +1,12 @@
 #include <iostream>
 #include <ctime>
+#include <random>
 #include "Pessoa.h"
 #include "Aluno.h"
 #include "Professor.h"
-//#include "Processos.h"
 
 using namespace std;
+
 
 int main(){
     // system("cls");
@@ -24,6 +25,5 @@ int main(){
         else if(tipoUser == 2){
             professor->ImprimirProfessor();
         }
-
         
 }

@@ -14,6 +14,8 @@ class Processos {
     int idProcesso;
     int data, hora;
     int nptProcessos, npaProcessos;
+    int namin, namax; //para npa
+    int ntmin, ntmax; //para npt
     
     string assunto;
 
@@ -21,15 +23,15 @@ class Processos {
     
 
     public:
-    Processos();
 
-    int IdProcessso (int idProcesso) const;
+    int idProcesso (int idProcesso) const;
     int gerarNPT();
     int gerarNPA();
-    int Data (int processo) const;
-    int Hora (int processo) const;
+    int data (int processo) const;
+    int hora (int processo) const;
     void abrirProcesso(int nptProcessos, int npaProcessos); //cria processos 
-    int DistribuirPrioridade (TipoProcesso p); //recebe alguma referência do poteiro da pilha.
+    void tramitarProcesso(); //passa o processo para o próximo setor
+    int distribuirPrioridade (TipoProcesso p); //recebe alguma referência do poteiro da pilha.
 
     //criar metodo para pegar a matricula do solicitante
 
