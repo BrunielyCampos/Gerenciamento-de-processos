@@ -24,6 +24,6 @@ int main(){
 
         else if(tipoUser == 2){
             professor->ImprimirProfessor();
-        }
+        } 
         
 }

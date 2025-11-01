@@ -11,11 +11,11 @@ struct Node{
 };
 
 class CaixaDeProcessos {
-    public:
+    private:
 
        Node *top;
 
-    private:
+    public:
 
     CaixaDeProcessos();
 
