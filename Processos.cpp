@@ -1,6 +1,7 @@
 #include "Processos.h"
 #include "CaixaDeProcessos.h"
 #include <random>
+#include <format>
 
 
     Processos::Processos(){
@@ -18,28 +19,21 @@
     }*/
 
     int Processos::data (int processo) const{
-        random_device rd;
-        static mt19937 gen(rd());
-
-        uniform_int_distribution<int> distrib(1, 30);
-
-        int dataGerado = distrib(gen);
-        this->m_data = dataGerado;
-        return dataGerado;
+        
     }
 
     
+    string Gerenciador::gerarHoraAleatoria(){
+        uniform_int_distribution<int> distHora(8, 11);
+        uniform_int_distribution<int> distMinSeg(0, 59);
 
-    int Processos::hora (int processo) const{
-        random_device rd;
-        static mt19937 gen(rd());
+        int hora = distHora(engine);
+        int minuto = distMinSeg(engine);
+        int segundo = distMinSeg(engine);
 
-        uniform_int_distribution<int> distrib(0, 1);
     
-        
-        
-        return;
-    }
+    return format("{:02}:{:02}:{:02}", hora, minuto, segundo);
+}
 
     void Processos::abrirProcesso(int nptProcessos, int npaProcessos){
         
@@ -50,14 +44,13 @@
     unsigned int seed = static_cast<unsigned int>(time(nullptr));
     randomEngine.seed(seed);
 }
-
-// Inicializa o motor de aleatoriedade (caso precise reiniciar)
+ Inicializa o motor de aleatoriedade (caso precise reiniciar)
 void Gerenciamento::inicializarAleatoriedade() {
     unsigned int seed = static_cast<unsigned int>(time(nullptr));
     randomEngine.seed(seed);
 }
 
-// Configura parâmetros de probabilidade e intervalos
+Configura parâmetros de probabilidade e intervalos
 void Gerenciamento::configurarParametros(double pAlta, double pMedia, double pBaixa,
                                          int minAbertos, int maxAbertos,
                                          int minTramitados, int maxTramitados) {
@@ -70,7 +63,7 @@ void Gerenciamento::configurarParametros(double pAlta, double pMedia, double pBa
     ntmax = maxTramitados;
 }
 
-// Gera valores aleatórios para quantidades de processos
+Gera valores aleatórios para quantidades de processos
 void Gerenciamento::gerarQuantidades() {
     uniform_int_distribution<int> distAbertos(namin, namax);
     uniform_int_distribution<int> distTramitados(ntmin, ntmax);
@@ -83,7 +76,7 @@ void Gerenciamento::gerarQuantidades() {
     cout << " - Processos tramitados: " << processosTramitados << endl;
 }
 
-// Simula prioridades de cada processo aberto
+Simula prioridades de cada processo aberto
 void Gerenciamento::simularPrioridades() {
     uniform_real_distribution<double> distProb(0.0, 1.0);
 
@@ -103,15 +96,11 @@ void Gerenciamento::simularPrioridades() {
     }
 }
 
-// Método que executa tudo junto
+Método que executa tudo junto
 void Gerenciamento::executarSimulacao() {
     gerarQuantidades();
     simularPrioridades();
 }*/
-
-     //recebe alguma referência do poteiro da pilha
-
-
     void Processos::imprimir() const{
 
     }
