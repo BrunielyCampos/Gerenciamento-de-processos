@@ -18,13 +18,15 @@ class Processos {
     string assunto;
 
     int * prtProcessos;
+
+   mt19937 engine;
     
 
     public:
 
     Processos();
     int idProcesso (int idProcesso) const;
-    int data (int processo) const;
+    string gerarDataAleatoria ();
     string gerarHoraAleatoria();
     void abrirProcesso(int nptProcessos, int npaProcessos); //cria processos 
 
