@@ -28,8 +28,10 @@ using namespace std;
         uniform_int_distribution<int> distDia(1, 31);
         uniform_int_distribution<int> distMes(1, 12);
 
-        int dia = distDia(engine);
-        int mes = distMes(engine);
+       mt19937 dataEngine;
+
+        int dia = distDia(dataEngine);
+        int mes = distMes(dataEngine);
 
         std::ostringstream oss;
         oss << dia << ":" << mes;
@@ -41,6 +43,7 @@ using namespace std;
         uniform_int_distribution<int> distMinSeg(0, 59);
 
 
+    
         int hora = distHora(engine);
         int minuto = distMinSeg(engine);
         int segundo = distMinSeg(engine);

@@ -26,7 +26,7 @@ class Processos {
 
     Processos();
     int idProcesso (int idProcesso) const;
-    string gerarDataAleatoria ();
+    string GerarDataAleatoria ();
     string gerarHoraAleatoria();
     void abrirProcesso(int nptProcessos, int npaProcessos); //cria processos 
 
