@@ -9,7 +9,7 @@ using std::cout;
 
 struct NodeBaixa{
     NodeBaixa * next;
-    int processo; //processo
+    Processos* processo; //processo
     NodeBaixa * previous;
 };
 
@@ -36,9 +36,9 @@ class ListaDuplaBaixa {
     void clear();
     void print(Ordem ordem = Ordem::PRAFRENTE) const;
 
-    const NodeBaixa * busca(int processo) const;
-    bool insert(int processo);
-    bool remove(int processo);
+    const NodeBaixa * busca(Processos* processo) const;
+    bool insert(Processos* processo);
+    bool remove(Processos* processo);
 
 };
 

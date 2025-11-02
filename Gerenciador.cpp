@@ -11,6 +11,8 @@
 #include <iostream>
 #include <random>
 
+using namespace std;
+
 Gerenciador::Gerenciador(){
     namin = 1;
     namax = 5;
@@ -45,18 +47,71 @@ Gerenciador::Gerenciador(int minAbertos, int maxAbertos, int minTramitados, int 
         }
 }
 
-    double Gerenciador::GerarProbabilidade(){
-        
+
+   PrioridadeProcessos Gerenciador::GerarProbabilidade() {
+    
+    random_device rd;
+    uniform_int_distribution<int> distrib(0, 99);
+    static mt19937 gen(rd());
+    int sorteio = distrib(gen);
+
+    if (sorteio < 10) { 
+        return  PrioridadeProcessos::ALTA;
+    }
+   
+    else if (sorteio < 40) { // 30% de chance
+        return  PrioridadeProcessos::MEDIA;
+    }
+   
+    else { // 60% de chance
+        return  PrioridadeProcessos::BAIXA;
+    }
+}
+
+    int Gerenciador::GerarPrioridade(){
+
+        PrioridadeProcessos p = Processo->getPrioridade();
+
+    // Passo 2: "Entregue no endereço correto" (coloque na lista certa).
+    switch (p) {
+        case PrioridadeProcessos::ALTA:
+            this->listaAlta.inserirNoFim(processo);
+            std::cout << "-> Processo ID " << processo->IdProcesso() << " distribuido para: ALTA PRIORIDADE\n";
+            break;
+
+        case PrioridadeProcessos::MEDIA:
+            this->listaMedia.insert(processo); // Lembre-se de corrigir o 'insert' para aceitar Processos*
+            std::cout << "-> Processo ID " << processo->IdProcesso() << " distribuido para: MEDIA PRIORIDADE\n";
+            break;
+
+        case PrioridadeProcessos::BAIXA:
+            this->listaBaixa.insert(processo); // Lembre-se de corrigir o 'insert' para aceitar Processos*
+            std::cout << "-> Processo ID " << processo->IdProcesso() << " distribuido para: BAIXA PRIORIDADE\n";
+            break;
+    }
     }
 
+    void Gerenciador::DistribuirPrioridade(Processos* processo){
+            static int counter = 0;
+            counter++;
 
-    void Gerenciador::DistribuirPrioridade(Processos* processo);{
+            int mod = counter % 10;
+
+            if (mod == 0) 
+            return PrioridadeProcessos::ALTA;           // 10%
+            else if (mod >= 1 && mod <= 3) 
+            return PrioridadeProcessos::MEDIA; // 30%
+            else 
+            return PrioridadeProcessos::BAIXA;                   // 60%
         
        
     }
 
+
     void Gerenciador::tramitarProcessos(){
-        
+        if(Prioridade == 1){
+            //vai pra pilha
+        }
     }
 
     int Gerenciador::gerarN_Processos(){
@@ -64,18 +119,17 @@ Gerenciador::Gerenciador(int minAbertos, int maxAbertos, int minTramitados, int 
         static mt19937 gen(rd());
         uniform_int_distribution<int> distrib(3, 15); //processos entre 3 e 15
 
-        int n_processos = distrib(gen);
-        n_Processos = n_processosGerado;
-        return n_processos;
+        int n_processosGerado = distrib(gen);
+        int npaProcessos = n_processosGerado;
+        return npaProcessos;
     }
-
 
     void Gerenciador::abrirProcesso(int nptProcessos, int npaProcessos){ //criar processos
     cout << "Recebendo Processos..." << "\n";
 
         Processos * processos = new Processos();
         
-        for(int i = 0; i < n_processos; i++){
+        for(int i = 0; i < npaProcessos; i++){
 
             Pessoa* solicitante = this->CriarSolicitanteAleatorio();
 
@@ -99,60 +153,6 @@ Gerenciador::Gerenciador(int minAbertos, int maxAbertos, int minTramitados, int 
         }
         cout << "Processos recebidos com sucesso!" << "\n" << "Exibindo:" << "\n";
 
-        /*
-        
-            Prioridade GerenciadorProcessos::getPrioridadeAleatoria() {
-            // Versao SIMPLES e garantida de funcionar
-            static int counter = 0;
-            counter++;
-
-            // Distribuicao fixa para teste: 1 Alta, 3 Media, 6 Baixa a cada 10 processos
-            int mod = counter % 10;
-
-            if (mod == 0) return Prioridade::ALTA;           // 10%
-            else if (mod >= 1 && mod <= 3) return Prioridade::MEDIA; // 30%
-            else return Prioridade::BAIXA;                   // 60%
-        }
-
-      string GerenciadorProcessos::getAssuntoAleatorio(Prioridade prioridade, const string& tipoSolicitante) {
-            static int assuntoCounter = 0;
-            assuntoCounter++;
-
-            // Listas de assuntos por prioridade
-            static vector<string> assuntosAlta = {
-                "Problema urgente de sistema", "Falta critica de material", 
-                "Problema de seguranca", "Emergencia academica",
-                "Sistema indisponivel", "Acesso negado a recurso essencial"
-            };
-
-            static vector<string> assuntosMedia = {
-                "Requisicao de documentos", "Duvida sobre disciplina",
-                "Agendamento de aula", "Consulta de notas",
-                "Alteracao de turma", "Justificativa de falta",
-                "Certificado de conclusao", "Problema com frequencia"
-            };
-
-            static vector<string> assuntosBaixa = {
-                "Informacao geral", "Sugestao de melhoria",
-                "Consulta de horarios", "Material complementar",
-                "Duvida sobre calendario", "Solicitacao de informacao",
-                "Feedback sobre disciplina", "Consulta bibliografica"
-            };
-
-            const std::vector<std::string>* assuntos;
-
-            switch(prioridade) {
-                case Prioridade::ALTA: assuntos = &assuntosAlta; break;
-                case Prioridade::MEDIA: assuntos = &assuntosMedia; break;
-                case Prioridade::BAIXA: assuntos = &assuntosBaixa; break;
-                default: assuntos = &assuntosBaixa;
-            }
-
-            int index = assuntoCounter % assuntos->size();
-            return (*assuntos)[index];
-        }
-                
-                */
 
                     //for para exibir os processos criados e seus atributos
 
@@ -164,12 +164,10 @@ Gerenciador::Gerenciador(int minAbertos, int maxAbertos, int minTramitados, int 
                 //     dataHoraCompleta
                 // );
 
-                //  caixa->empilhar(novoProcesso);
-
-    
+                // caixa->empilhar(novoProcesso);
     }
 
-    void iniciarDia(){
+    void Gerenciador::iniciarDia(){
     for(int dia = 0; dia < 3; dia++){
         
         for(int i = 0; i < 3; i++){

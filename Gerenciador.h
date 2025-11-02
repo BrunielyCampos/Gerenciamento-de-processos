@@ -9,10 +9,13 @@
 #include "Processos.h" // A classe Processos em si
 #include "Pessoa.h"   // Para poder criar Alunos e Professores
 
+enum PrioridadeProcessos{ALTA, MEDIA, BAIXA};
 class Gerenciador {
 public:
     // Construtor para definir os parâmetros da simulação
     Gerenciador();
+
+    PrioridadeProcessos prioridade;
 
     // <<< ALTERAÇÃO AQUI: Este é o único método público que a main vai chamar >>>
     void iniciarSimulacao(int dias);
@@ -30,16 +33,19 @@ private:
 
     // <<< ALTERAÇÃO AQUI: A lógica foi dividida em métodos privados e organizados >>>
     // Isso segue o Princípio da Responsabilidade Única.
-    Gerenciador(int minAbertos, int maxAbertos, int minTramitados, int maxTramitados)
-    void executarUmDia();
-    void abrirNovosProcessos();
-    void organizarProcessos();
+    Gerenciador(int minAbertos, int maxAbertos, int minTramitados, int maxTramitados);
+    int gerarN_Processos();
+    double GerarProbabilidade();
+    PrioridadeProcessos GerarPrioridade();
+    void DistribuirPrioridade(Processos* processo);
+    void iniciarDia();
+    void abrirProcesso(int nptProcessos, int npaProcessos);
     void tramitarProcessos();
     void imprimirPendentes() const;
 
     // Métodos auxiliares que ajudam os principais
-    Pessoa* criarSolicitanteAleatorio();
-    void distribuirPrioridade(Processos* processo);
+    Pessoa* CriarSolicitanteAleatorio();
+    void DistribuirPrioridade(Processos* processo);
     // ... outros métodos que você possa precisar
 };
 

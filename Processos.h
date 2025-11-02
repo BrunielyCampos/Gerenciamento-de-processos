@@ -7,8 +7,6 @@
 
 using namespace std;
 
-enum PrioridadeProcessos{ALTA, MEDIA, BAIXA};
-
 class Processos {
     private:
     int idProcesso;

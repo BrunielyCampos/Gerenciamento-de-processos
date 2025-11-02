@@ -44,7 +44,7 @@ void ListaDuplaBaixa::print(Ordem ordem) const{
 
 //ver se vai precisar de um metodo para buscar de trás pra frente
 
-const NodeBaixa * ListaDuplaBaixa::busca(int processo) const{
+const NodeBaixa * ListaDuplaBaixa::busca(Processos* processo) const{
     NodeBaixa * current = this->head;
 
     while(current != nullptr && current->processo < processo){
@@ -58,7 +58,7 @@ const NodeBaixa * ListaDuplaBaixa::busca(int processo) const{
     return nullptr;
 }
 
-bool ListaDuplaBaixa::insert(int processo){
+bool ListaDuplaBaixa::insert(Processos* processo){
 
     NodeBaixa * newNode = new NodeBaixa();
     newNode->processo = processo;
@@ -79,7 +79,7 @@ bool ListaDuplaBaixa::insert(int processo){
 
 }
 
-bool ListaDuplaBaixa::remove(int processo){
+bool ListaDuplaBaixa::remove(Processos* processo){
     if(isEmpty()){ //caso a lista esteja vazia
         cout << "Lista vazia" << "\n";
         return false;
