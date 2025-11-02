@@ -13,25 +13,25 @@ using std::cout;
 
         Node * novo = new Node; //cria um novo node(uma "caixinha") dentro da pilha
         novo->processo = novoProcesso; //coloca o novo processo dentro do node
-        novo->proximo = top; //Faz o novo nó apontar para o nó que antes estava no topo da pilha.
+        novo->proximo = top; //Faz o novo no apontar para o no que antes estava no topo da pilha.
         top = novo; //agora o top aponta para o novoProcesso
 
         //o processo de empilhar consiste em criar um novo espaco dentro da pilha
 
     }
 
-    void CaixaDeProcessos::Desempilhar(void (*DistribuirPrioridade)(TipoProcesso)){
+    TipoProcesso CaixaDeProcessos::Desempilhar(void (*DistribuirPrioridade)(TipoProcesso)){
         if (isEmpty()){               
             cout<< "A Caixa de processos está VAZIA!";
             return;
         }
 
-        Node * temp = top; //Cria uma cópia do nó do topo em temp.
+        Node * temp = top; //Cria uma copia do no do topo em temp.
         TipoProcesso elemento = temp->processo; 
         top = temp->proximo;
-        delete temp;
-        DistribuirPrioridade(elemento);
-        temp = nullptr;
+       delete temp; // 3. Libera a memória do "container" (o nó)
+
+        return elemento;
     }
 
     bool CaixaDeProcessos::isEmpty(){

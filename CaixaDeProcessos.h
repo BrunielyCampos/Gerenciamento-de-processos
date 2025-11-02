@@ -20,7 +20,7 @@ class CaixaDeProcessos {
     CaixaDeProcessos();
 
     void empilhar(TipoProcesso novoProcesso);
-    void Desempilhar(void (*DistribuirPrioridade)(TipoProcesso));
+    TipoProcesso Desempilhar(void (*DistribuirPrioridade)(TipoProcesso));
     bool isEmpty();
 };
 #endif

@@ -25,27 +25,9 @@ Gerenciador::Gerenciador(int minAbertos, int maxAbertos, int minTramitados, int 
     ntmax = maxTramitados;
 }
 
- int Gerenciador::gerarNPT(){
-        random_device rd;
-        static mt19937 gen(rd());
-        uniform_int_distribution<int> distrib(3, 10);
 
-        int npt = distrib(gen);
-        this->nptProcessos = npt;
-        return npt;
-    }
 
-    int Gerenciador::gerarNPA(){
-        random_device rd;
-        static mt19937 gen(rd());
-        uniform_int_distribution<int> distrib(1, 5);
-
-        int npaGerado = distrib(gen);
-        this->npaProcessos = npaGerado;
-        return npaGerado;
-    }
-
-    Pessoa* Gerenciador::CriarSolicitanteAleatorio() {
+   Pessoa* Gerenciador::CriarSolicitanteAleatorio(){
     
         mt19937 engine;
         uniform_int_distribution<int> dist(0, 1);
@@ -63,17 +45,17 @@ Gerenciador::Gerenciador(int minAbertos, int maxAbertos, int minTramitados, int 
         }
 }
 
-    double Gerenciador::gerarProbabilidade(){
+    double Gerenciador::GerarProbabilidade(){
         
     }
 
 
-    int Gerenciador::distribuirPrioridade (TipoProcesso p){
+    void Gerenciador::DistribuirPrioridade(Processos* processo);{
         
        
     }
 
-    void Gerenciador::tramitarProcesso(){
+    void Gerenciador::tramitarProcessos(){
         
     }
 
@@ -82,9 +64,9 @@ Gerenciador::Gerenciador(int minAbertos, int maxAbertos, int minTramitados, int 
         static mt19937 gen(rd());
         uniform_int_distribution<int> distrib(3, 15); //processos entre 3 e 15
 
-        int n_processosGerado = distrib(gen);
-        this->n_processos = n_processosGerado;
-        return n_processosGerado;
+        int n_processos = distrib(gen);
+        n_Processos = n_processosGerado;
+        return n_processos;
     }
 
 
@@ -92,7 +74,6 @@ Gerenciador::Gerenciador(int minAbertos, int maxAbertos, int minTramitados, int 
     cout << "Recebendo Processos..." << "\n";
 
         Processos * processos = new Processos();
-        CaixaDeProcessos * caixa = new CaixaDeProcessos();
         
         for(int i = 0; i < n_processos; i++){
 
@@ -106,28 +87,84 @@ Gerenciador::Gerenciador(int minAbertos, int maxAbertos, int minTramitados, int 
             
             string assuntos[] = { //falta mais
             "Requerimento de Documentos",
-            "Revisão de Nota",
-            "Solicitação de Declaração",
-            "Pedido de Transferência",
-            "Solicitação de suporte tecnicos de TI", "Revisão de Nota",
-            "Solicitação de Laboratório", 
-            "Apresentar Justificativa de faltas",  "Requerimento de apresentação de Trabalho de conclusão de curso", 
-            "Requerimento de apresentação de Relatório de Pratica Profissional",
-            "Requerimento para Trancamento de Curso", "Solicitação de Readimição"
+            "Revisao de Nota",
+            "Solicitacao de Declaracao",
+            "Pedido de Transferencia",
+            "Solicitacao de suporte tecnicos de TI", "Revisao de Nota",
+            "Solicitacao de Laboratorio",
+            "Apresentar Justificativa de faltas",  "Requerimento de apresentacao de Trabalho de conclusao de curso", 
+            "Requerimento de apresentacao de Relatorio de Pratica Profissional",
+            "Requerimento para Trancamento de Curso", "Solicitacao de Readimicao"
             };
         }
         cout << "Processos recebidos com sucesso!" << "\n" << "Exibindo:" << "\n";
-            //for para exibir os processos criados e seus atributos
 
-        // Processos* novoProcesso = new Processos(
-        //     id,
-        //    data,
-        //    hora, // Passa o solicitante que acabamos de criar
-        //     assunto,
-        //     dataHoraCompleta
-        // );
+        /*
+        
+            Prioridade GerenciadorProcessos::getPrioridadeAleatoria() {
+            // Versao SIMPLES e garantida de funcionar
+            static int counter = 0;
+            counter++;
 
-        //  caixa->empilhar(novoProcesso);
+            // Distribuicao fixa para teste: 1 Alta, 3 Media, 6 Baixa a cada 10 processos
+            int mod = counter % 10;
+
+            if (mod == 0) return Prioridade::ALTA;           // 10%
+            else if (mod >= 1 && mod <= 3) return Prioridade::MEDIA; // 30%
+            else return Prioridade::BAIXA;                   // 60%
+        }
+
+      string GerenciadorProcessos::getAssuntoAleatorio(Prioridade prioridade, const string& tipoSolicitante) {
+            static int assuntoCounter = 0;
+            assuntoCounter++;
+
+            // Listas de assuntos por prioridade
+            static vector<string> assuntosAlta = {
+                "Problema urgente de sistema", "Falta critica de material", 
+                "Problema de seguranca", "Emergencia academica",
+                "Sistema indisponivel", "Acesso negado a recurso essencial"
+            };
+
+            static vector<string> assuntosMedia = {
+                "Requisicao de documentos", "Duvida sobre disciplina",
+                "Agendamento de aula", "Consulta de notas",
+                "Alteracao de turma", "Justificativa de falta",
+                "Certificado de conclusao", "Problema com frequencia"
+            };
+
+            static vector<string> assuntosBaixa = {
+                "Informacao geral", "Sugestao de melhoria",
+                "Consulta de horarios", "Material complementar",
+                "Duvida sobre calendario", "Solicitacao de informacao",
+                "Feedback sobre disciplina", "Consulta bibliografica"
+            };
+
+            const std::vector<std::string>* assuntos;
+
+            switch(prioridade) {
+                case Prioridade::ALTA: assuntos = &assuntosAlta; break;
+                case Prioridade::MEDIA: assuntos = &assuntosMedia; break;
+                case Prioridade::BAIXA: assuntos = &assuntosBaixa; break;
+                default: assuntos = &assuntosBaixa;
+            }
+
+            int index = assuntoCounter % assuntos->size();
+            return (*assuntos)[index];
+        }
+                
+                */
+
+                    //for para exibir os processos criados e seus atributos
+
+                // Processos* novoProcesso = new Processos(
+                //     id,
+                //    data,
+                //    hora, // Passa o solicitante que acabamos de criar
+                //     assunto,
+                //     dataHoraCompleta
+                // );
+
+                //  caixa->empilhar(novoProcesso);
 
     
     }
