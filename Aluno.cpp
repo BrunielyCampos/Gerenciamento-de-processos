@@ -8,7 +8,7 @@
 using namespace std;
 
     Aluno::Aluno(){  
-        DefCurso();
+       imprimirAluno();
     }
 
     int Aluno::DefCurso(){

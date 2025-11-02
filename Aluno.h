@@ -15,7 +15,8 @@ enum NomeCurso {
 class Aluno : public Pessoa {
     private:
         NomeCurso curso;           
-        string nome;         
+        string nome;
+        Pessoa * pessoa = new Pessoa();                  
         
     public:
         Aluno();

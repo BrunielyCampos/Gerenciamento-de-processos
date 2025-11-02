@@ -1,4 +1,5 @@
 #include "ListaDuplaBaixa.h"
+#include "Processos.h"
 
 ListaDuplaBaixa::ListaDuplaBaixa(){
     this->head = this->tail = nullptr;
@@ -64,7 +65,7 @@ bool ListaDuplaBaixa::insert(int processo){
     newNode->next = nullptr;
     newNode->previous = nullptr;
 
-    if(isEmpty){
+    if(isEmpty()){
         head = tail = newNode;
         length++;
         return true;
@@ -81,7 +82,7 @@ bool ListaDuplaBaixa::insert(int processo){
 bool ListaDuplaBaixa::remove(int processo){
     if(isEmpty()){ //caso a lista esteja vazia
         cout << "Lista vazia" << "\n";
-        return;
+        return false;
     }
     NodeBaixa* current = this->head;
 
@@ -108,7 +109,7 @@ bool ListaDuplaBaixa::remove(int processo){
 
     delete current;
     length--;
-    cout << "O Processo" << processo << "removido" << "\n";
+    cout << "O Processo " << processo << " removido" << "\n";
 
     return true;
 }
