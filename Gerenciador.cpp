@@ -78,28 +78,25 @@ void Gerenciador::tramitarProcessos() {
 
     while (npt > 0 && (!listaAlta.isEmpty() || !listaMedia.isEmpty() || !listaBaixa.isEmpty())) {
         
-        // Tenta tramitar 3 de alta prioridade
         for (int i = 0; i < 3 && npt > 0 && !listaAlta.isEmpty(); ++i) {
             Processos* p = listaAlta.removerDoInicio();
-            std::cout << "Tramitado [ALTA]: Processo ID " << p->IdProcesso() << "\n";
+            std::cout << "Tramitado [ALTA]: Processo ID " << p->IdProcessos() << "\n";
             delete p;
             npt--;
         }
 
-        // Tenta tramitar 2 de média prioridade (<<< CORRIGIDO >>>)
         for (int i = 0; i < 2 && npt > 0 && !listaMedia.isEmpty(); ++i) {
-            // Remove e obtém o processo do início da lista
+    
             Processos* p = listaMedia.remove(p);
-            std::cout << "Tramitado [MEDIA]: Processo ID " << p->IdProcesso() << "\n";
+            std::cout << "Tramitado [MEDIA]: Processo ID " << p->IdProcessos() << "\n";
             delete p;
             npt--;
         }
 
-        // Tenta tramitar 1 de baixa prioridade (<<< CORRIGIDO >>>)
-        if (npt > 0 && !listaBaixa.isEmpty()) { // Verifica a lista correta
-            // Remove e obtém o processo do início da lista
+      
+        if (npt > 0 && !listaBaixa.isEmpty()) { 
             Processos* p = listaBaixa.remove();
-            std::cout << "Tramitado [BAIXA]: Processo ID " << p->IdProcesso() << "\n";
+            std::cout << "Tramitado [BAIXA]: Processo ID " << p->IdProcessos() << "\n";
             delete p;
             npt--;
         }
@@ -109,16 +106,11 @@ void Gerenciador::tramitarProcessos() {
 void Gerenciador::imprimirPendentes() const {
     std::cout << "\n--- Relatorio de Pendencias (Fim do Dia) ---\n";
     std::cout << "Pendentes - ALTA PRIORIDADE:\n";
-    // this->listaAlta.imprimir(); // Você precisará de um método de impressão nas suas listas
     std::cout << "Pendentes - MEDIA PRIORIDADE:\n";
-    // this->listaMedia.print();
     std::cout << "Pendentes - BAIXA PRIORIDADE:\n";
-    // this->listaBaixa.print();
 }
 
 
-// --- 3. MÉTODOS AUXILIARES ---
-// As "habilidades" que os métodos acima usam.
 
 int Gerenciador::gerarNPA() {
     static std::mt19937 gen(std::random_device{}());
@@ -133,39 +125,37 @@ int Gerenciador::gerarNPT() {
 }
 
 PrioridadeProcessos Gerenciador::sortearPrioridadeAleatoria() {
-    // Esta é a sua lógica de 'GerarProbabilidade', colocada no lugar certo.
     static std::mt19937 gen(std::random_device{}());
     std::uniform_int_distribution<int> distrib(0, 99);
     int sorteio = distrib(gen);
 
-    if (sorteio < 10) return ALTA;  // 10%
-    else if (sorteio < 40) return MEDIA; // 30%
-    else return BAIXA;               // 60%
+    if (sorteio < 10) return ALTA;  
+    else if (sorteio < 40) return MEDIA; 
+    else return BAIXA;              
 }
 
 void Gerenciador::distribuirPrioridade(Processos* processo) {
-    // Esta é a sua lógica de 'distribuirPrioridade', com o nome correto.
+   
     switch (processo->getPrioridade()) {
         case ALTA:
             this->listaAlta.inserirNoFim(processo);
             break;
         case MEDIA:
-            this->listaMedia.insert(processo); // Lembre-se que suas listas devem aceitar Processos*
+            this->listaMedia.insert(processo); 
             break;
         case BAIXA:
-            this->listaBaixa.insert(processo); // Lembre-se que suas listas devem aceitar Processos*
+            this->listaBaixa.insert(processo); 
             break;
     }
 }
 
 Pessoa* Gerenciador::criarSolicitanteAleatorio() {
-    // Versão corrigida para evitar vazamento de memória.
     static std::mt19937 gen(std::random_device{}());
     std::uniform_int_distribution<int> dist(0, 1);
     
     if (dist(gen) == 0) {
-        return new Aluno(); // Só cria o Aluno se ele for escolhido
+        return new Aluno(); 
     } else {
-        return new Professor(); // Ou só o Professor se ele for escolhido
+        return new Professor();
     }
 }

@@ -1,39 +1,47 @@
-#ifndef _PROCESSOS_H_
-#define _PROCESSOS_H_
+#ifndef PROCESSOS_H
+#define PROCESSOS_H
 
 #include <string>
+#include <random>
 
-using namespace std;
-
-enum PrioridadeProcessos{ALTA, MEDIA, BAIXA};
-
-class Processos {
-    private:
-
-    int idGerado;
-    string dataAbertura;
-    string horaAbertura;
-    
-    
-    PrioridadeProcessos prioridade;
-    
-    string assunto;
-
-    
-    
-    int gerarIdUnico();
-    string GerarDataAleatoria();
-    string GerarHoraAleatoria();
-
-    public:
-
-    Processos();
-    int gerarN_Processos();
-    int IdProcesso ();
-    void setPrioridade(PrioridadeProcessos p);
-    PrioridadeProcessos getPrioridade();
-    void imprimir();
-
+enum PrioridadeProcessos {
+    BAIXA,
+    MEDIA,
+    ALTA
 };
 
-#endif
+class Processos {
+private:
+    // --- ATRIBUTOS PRIVADOS ---
+    int id;
+    std::string dataAbertura;
+    std::string horaAbertura;
+    PrioridadeProcessos prioridade;
+    std::string assunto;
+
+    // --- MOTOR ESTÁTICO COMPARTILHADO ---
+    static std::mt19937 engine;
+
+    // --- MÉTODOS PRIVADOS AUXILIARES ---
+    int gerarIdUnico();
+    std::string gerarDataAleatoria();
+    std::string gerarHoraAleatoria();
+
+public:
+    // --- MÉTODOS PÚBLICOS ---
+
+    // Construtor que monta o objeto.
+    Processos();
+    
+    // Getters para permitir a leitura segura dos dados.
+    int IdProcessos() const;
+    PrioridadeProcessos getPrioridade() const;
+
+    // Setter para permitir a alteração segura da prioridade.
+    void setPrioridade(PrioridadeProcessos p);
+
+    // Método para exibir as informações do processo.
+    void imprimir() const;
+};
+
+#endif // PROCESSOS_H

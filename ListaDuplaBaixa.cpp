@@ -42,7 +42,6 @@ void ListaDuplaBaixa::print(Ordem1 ordem) const{
     }
 }
 
-//ver se vai precisar de um metodo para buscar de trás pra frente
 
 const NodeBaixa * ListaDuplaBaixa::busca(Processos* processo) const{
     NodeBaixa * current = this->head;

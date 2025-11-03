@@ -19,7 +19,6 @@ class Professor : public Pessoa {
 
         int Especialidade();
 
-        // agora retorna um único nome (string), não um vetor
         string ListaNomeProf();
 
         string DefEspecialidade();

@@ -9,7 +9,7 @@ using std::cout;
 
 struct NodeBaixa{
     NodeBaixa * next;
-    Processos* processo; //processo
+    Processos* processo;
     NodeBaixa * previous;
 };
 

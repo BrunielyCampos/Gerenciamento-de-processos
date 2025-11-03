@@ -33,7 +33,6 @@ class ListaDuplaMedia {
     int getLenght() const;
     
     void clear();
-    //void print(Ordem2 ordem = Ordem2::M_PRAFRENTE) const;
 
     NodeMedia * busca(Processos* processo) const;
     Processos* insert(Processos* processo);

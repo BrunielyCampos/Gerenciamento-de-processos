@@ -20,8 +20,8 @@ class Aluno : public Pessoa {
         
     public:
         Aluno();
-        vector<std::string> ListNomesAlunos();  // Adicionado std::
-        string DefNomeCurso() const;            // Adicionado std::
+        vector<std::string> ListNomesAlunos();  
+        string DefNomeCurso() const;           
         int DefCurso();
         void imprimirAluno();
 };

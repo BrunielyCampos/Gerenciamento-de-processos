@@ -31,7 +31,7 @@ void ListaDuplaMedia::print() const {
         return;
     }
     while (current != nullptr) {
-        std::cout << "   -> Processo ID: " << current->processo->IdProcesso() << "\n";
+        std::cout << "   -> Processo ID: " << current->processo->IdProcessos() << "\n";
         current = current->next;
     }
 }
