@@ -1,11 +1,10 @@
 #ifndef _CAIXA_PROCESSOS_
 #define _CAIXA_PROCESSOS_
-
-typedef int TipoProcesso;
+#include "Processos.h"
 
 struct Node{
 
-    int processo;
+    Processos * processo;
     Node *proximo;
             
 };
@@ -19,8 +18,8 @@ class CaixaDeProcessos {
 
     CaixaDeProcessos();
 
-    void empilhar(TipoProcesso novoProcesso);
-    TipoProcesso Desempilhar(void (*DistribuirPrioridade)(TipoProcesso));
+    void empilhar( Processos* novoProcesso);
+    Processos* Desempilhar();
     bool isEmpty();
 };
 #endif

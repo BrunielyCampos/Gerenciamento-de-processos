@@ -9,13 +9,13 @@ using std::cout;
 
 struct NodeMedia{
     NodeMedia * next;
-    int processo;
+    Processos* processo;
     NodeMedia * previous;
 };
 
-enum Ordem{
-    PRAFRENTE,
-    PRATRAS
+enum Ordem2{
+    M_PRAFRENTE,
+    M_PRATRAS
 };
 
 class ListaDuplaMedia {
@@ -33,12 +33,12 @@ class ListaDuplaMedia {
     int getLenght() const;
     
     void clear();
-    void print(Ordem ordem = Ordem::PRAFRENTE) const;
+    //void print(Ordem2 ordem = Ordem2::M_PRAFRENTE) const;
 
-    const NodeMedia * busca(int processo) const;
-    bool insert(int processo);
-    bool remove(int processo);
-    
+    NodeMedia * busca(Processos* processo) const;
+    Processos* insert(Processos* processo);
+    Processos* remove(Processos* processo);
+    void print() const;
 };
 
 #endif

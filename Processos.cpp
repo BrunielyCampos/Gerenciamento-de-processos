@@ -8,12 +8,21 @@
 
 using namespace std;
 
+ #include "Processos.h"
+#include <random>    // Essencial para números aleatórios
+#include <sstream>   // Essencial para formatar strings
+#include <iomanip>   // Essencial para formatar strings
+#include <iostream>
 
 
-    Processos::Processos(){
-        random_device rd;
-        engine.seed(rd()); //garantir aleatoridade
-    }
+Processos::Processos() {
+
+    this->idGerado = this->IdProcesso();
+    this->dataAbertura = this->GerarDataAleatoria();
+    this->horaAbertura = this->GerarHoraAleatoria();
+    this->prioridade = PrioridadeProcessos::BAIXA;
+    this->assunto = "Assunto a ser definido";
+}
 
     int Processos::IdProcesso(){
         random_device rd;
@@ -29,33 +38,62 @@ using namespace std;
         uniform_int_distribution<int> distMes(1, 12);
 
         //
-        // t19937 dataEngine;
+        mt19937 engine;
 
         int dia = distDia(engine);
         int mes = distMes(engine);
 
-        std::ostringstream oss;
-        oss << dia << "/" << mes;
-        return oss.str();
+        std::ostringstream dataAbertura;
+        dataAbertura << dia << "/" << mes;
+        return dataAbertura.str();
     }
 
-    string Processos::gerarHoraAleatoria(){
+    string Processos::GerarHoraAleatoria(){
         uniform_int_distribution<int> distHora(8, 11);
         uniform_int_distribution<int> distMinSeg(0, 59);
     
+        mt19937 engine;
+
         int hora = distHora(engine);
         int minuto = distMinSeg(engine);
         int segundo = distMinSeg(engine);
 
-        stringstream ss;
-        ss << setw(2) << setfill('0') << hora << ":"
+        stringstream horaAbertura;
+        horaAbertura << setw(2) << setfill('0') << hora << ":"
         << setw(2) << setfill('0') << minuto << ":"
         << setw(2) << setfill('0') << segundo;
 
-        return ss.str();
+        return horaAbertura.str();
     }
 
-    void Processos::imprimir() const{ //Ver se precisa
-        cout << "Quantidade de processos abertos: " << "\n";
-        cout << "Quantidade de processos tramitados: " << "\n";
+    void Processos::setPrioridade(PrioridadeProcessos p) {
+        this->prioridade = p;
+    }
+
+    PrioridadeProcessos Processos::getPrioridade() {
+        return this->prioridade;
+    }
+
+
+    void Processos::imprimir() {
+        // A lógica para converter o enum em texto fica aqui dentro,
+        // simplificando a interface da classe.
+        std::string prioridadeTexto;
+        switch (this->prioridade) {
+            case PrioridadeProcessos::ALTA:
+                prioridadeTexto = "Alta";
+                break;
+            case PrioridadeProcessos::MEDIA:
+                prioridadeTexto = "Media";
+                break;
+            case PrioridadeProcessos::BAIXA:
+                prioridadeTexto = "Baixa";
+                break;
+        }
+
+        std::cout << "----------------------------------------\n";
+        std::cout << "ID do Processo: " << this->idGerado<< "\n";
+        std::cout << "Prioridade:     " << prioridadeTexto << "\n";
+        std::cout << "Abertura:       " << this->dataAbertura << " as " << this->horaAbertura << "\n";
+        std::cout << "----------------------------------------\n";
     }

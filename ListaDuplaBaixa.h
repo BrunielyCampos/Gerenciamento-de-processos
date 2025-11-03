@@ -13,9 +13,9 @@ struct NodeBaixa{
     NodeBaixa * previous;
 };
 
-enum Ordem{
-    PRAFRENTE,
-    PRATRAS
+enum Ordem1{
+    B_PRAFRENTE,
+    B_PRATRAS
 };
 
 
@@ -34,11 +34,11 @@ class ListaDuplaBaixa {
     int getLenght() const;
 
     void clear();
-    void print(Ordem ordem = Ordem::PRAFRENTE) const;
+    void print(Ordem1 ordem = Ordem1::B_PRAFRENTE) const;
 
     const NodeBaixa * busca(Processos* processo) const;
     bool insert(Processos* processo);
-    bool remove(Processos* processo);
+    Processos* remove();
 
 };
 

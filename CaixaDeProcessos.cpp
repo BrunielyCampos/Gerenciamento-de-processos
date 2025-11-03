@@ -1,6 +1,5 @@
 #include <iostream>
 #include "CaixaDeProcessos.h"
-#include "Processos.h"
 
 
 using std::cout;
@@ -9,7 +8,7 @@ using std::cout;
         
     }
 
-    void CaixaDeProcessos::empilhar(TipoProcesso novoProcesso){
+    void CaixaDeProcessos::empilhar( Processos *  novoProcesso){
 
         Node * novo = new Node; //cria um novo node(uma "caixinha") dentro da pilha
         novo->processo = novoProcesso; //coloca o novo processo dentro do node
@@ -20,14 +19,14 @@ using std::cout;
 
     }
 
-    TipoProcesso CaixaDeProcessos::Desempilhar(void (*DistribuirPrioridade)(TipoProcesso)){
+     Processos*  CaixaDeProcessos::Desempilhar(){
         if (isEmpty()){               
             cout<< "A Caixa de processos está VAZIA!";
-            return;
+            return nullptr;
         }
 
         Node * temp = top; //Cria uma copia do no do topo em temp.
-        TipoProcesso elemento = temp->processo; 
+        Processos * elemento = temp->processo; 
         top = temp->proximo;
        delete temp; // 3. Libera a memória do "container" (o nó)
 

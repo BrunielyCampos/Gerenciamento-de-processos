@@ -1,17 +1,30 @@
 #include <iostream>
-#include <ctime>
-#include <random>
-#include "Pessoa.h"
-#include "Aluno.h"
-#include "Professor.h"
-#include "Processos.h"
+#include <ctime>         // Necessário para a função time()
 #include "Gerenciador.h"
 
 using namespace std;
 
-int main(){
-    // system("cls");
+int main() {
+    
+    srand(time(NULL));
 
-    void iniciarDia();
+   
+    cout << "==========================================" << std::endl;
+    cout << "  Iniciando Simulacao de Processos" << std::endl;
+    cout << "==========================================" << std::endl;
+
+
+    Gerenciador sistema;
+
+
+    sistema.iniciarSimulacao(3);
+
+   
+    cout << "\n==========================================" << std::endl;
+    cout << "          Simulacao Finalizada" << std::endl;
+    cout << "==========================================" << std::endl;
+
+    
+    return 0;
         
 }

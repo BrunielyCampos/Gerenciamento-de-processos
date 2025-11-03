@@ -17,10 +17,9 @@ public:
     ListaSimples();
     ~ListaSimples();
 
-    void inserirNoFim(Processos* p);
+    void inserirNoFim(Processos* processo);
     Processos* removerDoInicio();
     bool isEmpty() const;
-    void imprimir() const;
 };
 
 #endif

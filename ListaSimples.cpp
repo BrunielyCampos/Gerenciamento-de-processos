@@ -39,11 +39,3 @@ Processos* ListaSimples::removerDoInicio() {
 bool ListaSimples::isEmpty() const {
     return inicio == NULL;
 }
-
-/*void ListaSimples::imprimir() const {
-    NoSimples* atual = inicio;
-    while (atual != NULL) {
-        atual->processo->imprimirInformacoesPendentes();
-        atual = atual->proximo;
-    }
-}*/

@@ -10,7 +10,7 @@ ListaDuplaMedia::~ListaDuplaMedia(){
 }
 
 bool ListaDuplaMedia::isEmpty() const{
-    return (this->head == nullptr);
+     return head == nullptr;
 }
 
 int ListaDuplaMedia::getLenght() const{
@@ -18,30 +18,25 @@ int ListaDuplaMedia::getLenght() const{
 }
 
 void ListaDuplaMedia::clear(){
-    if(!isEmpty()){
-        NodeMedia * current = this->head;
-        NodeMedia * aux;
-
-        while(current != nullptr){
-            aux = current;
-            current = current->next;
-            delete aux;
-        }
-        this->head = this->tail = nullptr;
-        this->length = 0;
+    while (!isEmpty()) {
+        Processos* p = remove(p); 
+        delete p; 
     }
 }
 
-void ListaDuplaMedia::print(Ordem ordem) const{
-    NodeMedia * current = (ordem == Ordem::PRAFRENTE) ? this->head : this->tail;
-
-    while(current != nullptr){
-        cout << "Processo: " << current->processo << " \n";
-        current = (ordem == Ordem::PRAFRENTE) ? current->next : current->previous;
+void ListaDuplaMedia::print() const {
+    NodeMedia* current = head;
+    if (isEmpty()) {
+        std::cout << "   (vazia)\n";
+        return;
+    }
+    while (current != nullptr) {
+        std::cout << "   -> Processo ID: " << current->processo->IdProcesso() << "\n";
+        current = current->next;
     }
 }
 
-const NodeMedia * ListaDuplaMedia::busca(int processo) const{
+NodeMedia * ListaDuplaMedia::busca(Processos* processo) const{
     NodeMedia * current = this->head;
 
     while(current != nullptr && current->processo < processo){
@@ -55,58 +50,44 @@ const NodeMedia * ListaDuplaMedia::busca(int processo) const{
     return nullptr;
 }
 
-bool ListaDuplaMedia::insert(int processo){
+Processos* ListaDuplaMedia::insert(Processos* processo){
 
     NodeMedia * newNode = new NodeMedia();
     newNode->processo = processo;
     newNode->next = nullptr;
     newNode->previous = nullptr;
 
-    if(isEmpty){
-        head = tail = newNode;
-        length++;
-        return true;
-    }
-
-    tail->next = newNode;
-    newNode->previous = tail;
-    tail = newNode;
-    length++;
-    return true;
-}
-
-bool ListaDuplaMedia::remove(int processo){
     if(isEmpty()){
-        cout << "Lista vazia" << "\n";
-        return false;
+        head = tail = newNode;
     }
-
-    NodeMedia * current = this->head;
-
-    while(current != nullptr && current->processo != processo){
-        current = current->next;
+    else{
+        tail->next = newNode;
+        newNode->previous = tail;
+        tail = newNode;
+        length++;
+        return processo;
     }
-
-    if(current == nullptr){
-        cout << "Processo nao encontrado" << "\n";
-        return false;
-    }
-
-    if(current->previous != nullptr){
-        current->previous->next = current->next;
-    }else{
-        head = current->next;
-    }
-
-    if(current->next != nullptr){
-        current->next->previous = current->previous;
-    }else{
-        tail = current->previous;
-    }
-
-    delete current;
-    length--;
-    cout << "Processo removido com sucesso" << "\n";
-    
-    return true;
 }
+
+Processos* ListaDuplaMedia::remove(Processos* processo){
+     if (isEmpty()) {
+        return nullptr;
+    }
+    
+    NodeMedia* temp = head;
+    Processos* processoRemovido = temp->processo;
+
+    head = head->next; // O novo 'head' é o segundo elemento
+    
+    if (head != nullptr) {
+        head->previous = nullptr; // O novo 'head' não tem ninguém antes
+    } else {
+        // Se a lista ficou vazia, o 'tail' também deve ser nulo
+        tail = nullptr;
+    }
+    
+    delete temp; // Libera a memória do nó removido
+    length--;
+    return processoRemovido;
+}
+

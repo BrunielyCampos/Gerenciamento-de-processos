@@ -33,12 +33,12 @@ void ListaDuplaBaixa::clear(){
     }
 }
 
-void ListaDuplaBaixa::print(Ordem ordem) const{
-    NodeBaixa * current = (ordem == Ordem::PRAFRENTE) ? this->head : this->tail;
+void ListaDuplaBaixa::print(Ordem1 ordem) const{
+    NodeBaixa * current = (ordem == Ordem1::B_PRAFRENTE) ? this->head : this->tail;
 
     while(current != nullptr){
         cout << "Processo: " << current->processo << " \n";
-        current = (ordem == Ordem::PRAFRENTE) ? current->next : current->previous;
+        current = (ordem == Ordem1::B_PRAFRENTE) ? current->next : current->previous;
     }
 }
 
@@ -79,37 +79,24 @@ bool ListaDuplaBaixa::insert(Processos* processo){
 
 }
 
-bool ListaDuplaBaixa::remove(Processos* processo){
-    if(isEmpty()){ //caso a lista esteja vazia
-        cout << "Lista vazia" << "\n";
-        return false;
+Processos* ListaDuplaBaixa::remove(){
+     if (isEmpty()) {
+        return nullptr;
     }
-    NodeBaixa* current = this->head;
+    
+    NodeBaixa* temp = head;
+    Processos* processoRemovido = temp->processo;
 
-    while(current != nullptr && current->processo != processo){
-        current = current->next;
+    head = head->next; // O novo 'head' é o segundo elemento
+    
+    if (head != nullptr) {
+        head->previous = nullptr; // O novo 'head' não tem ninguém antes
+    } else {
+        // Se a lista ficou vazia, o 'tail' também deve ser nulo
+        tail = nullptr;
     }
-
-    if(current == nullptr){
-        cout << "Processo nao encontrado" << "\n";
-        return false;
-    }
-
-    if(current->previous != nullptr){
-        current->previous->next = current->next;
-    }else{
-        head = current->next;
-    }
-
-    if(current->next != nullptr){
-        current->next->previous = current->previous;
-    }else{
-        tail = current->previous;
-    }
-
-    delete current;
+    
+    delete temp; // Libera a memória do nó removido
     length--;
-    cout << "O Processo " << processo << " removido" << "\n";
-
-    return true;
+    return processoRemovido;
 }

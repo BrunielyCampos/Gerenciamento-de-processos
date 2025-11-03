@@ -1,32 +1,38 @@
 #ifndef _PROCESSOS_H_
 #define _PROCESSOS_H_
-#include "CaixaDeProcessos.h"
 
-#include "Pessoa.h"
 #include <string>
 
 using namespace std;
 
+enum PrioridadeProcessos{ALTA, MEDIA, BAIXA};
+
 class Processos {
     private:
-    int idProcesso;
-    int data, hora;
+
+    int idGerado;
+    string dataAbertura;
+    string horaAbertura;
     
+    
+    PrioridadeProcessos prioridade;
     
     string assunto;
 
-    mt19937 engine;
     
+    
+    int gerarIdUnico();
+    string GerarDataAleatoria();
+    string GerarHoraAleatoria();
 
     public:
 
     Processos();
     int gerarN_Processos();
     int IdProcesso ();
-    string GerarDataAleatoria ();
-    string gerarHoraAleatoria();
-    
-    void imprimir() const;
+    void setPrioridade(PrioridadeProcessos p);
+    PrioridadeProcessos getPrioridade();
+    void imprimir();
 
 };
 
