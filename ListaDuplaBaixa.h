@@ -1,44 +1,44 @@
-#ifndef _LISTADPULABAIXA_H_
+#ifndef _LISTADPULABAIXA_H_  // Guarda de inclusão para evitar inclusões múltiplas
 #define _LISTADUPLABAIXA_H_
 
-#include "Processos.h"
-
+#include "Processos.h"  // Inclui o arquivo de cabeçalho dos processos
 #include <iostream>
 
-using std::cout;
+using std::cout;  // Usando cout do namespace std
 
+// Estrutura do nó para a lista duplamente encadeada de baixa prioridade
 struct NodeBaixa{
-    NodeBaixa * next;
-    Processos* processo;
-    NodeBaixa * previous;
+    NodeBaixa * next;      // Ponteiro para o próximo nó
+    Processos* processo;    // Ponteiro para o processo
+    NodeBaixa * previous;   // Ponteiro para o nó anterior
 };
 
+// Enumeração para definir a ordem de impressão
 enum Ordem1{
-    B_PRAFRENTE,
-    B_PRATRAS
+    B_PRAFRENTE,  // Para frente
+    B_PRATRAS     // Para trás
 };
 
-
+// Classe que implementa uma lista duplamente encadeada para processos de baixa prioridade
 class ListaDuplaBaixa {
     private:
-    NodeBaixa * head;
-    NodeBaixa * tail;
-    int length;
+    NodeBaixa * head;   // Ponteiro para o início da lista
+    NodeBaixa * tail;   // Ponteiro para o fim da lista
+    int length;         // Tamanho da lista
 
     public:
-    ListaDuplaBaixa();
+    ListaDuplaBaixa();  // Construtor
+    ~ListaDuplaBaixa(); // Destrutor
 
-    ~ListaDuplaBaixa();
+    bool isEmpty() const;             // Verifica se a lista está vazia
+    int getLenght() const;           // Retorna o tamanho da lista
 
-    bool isEmpty() const;
-    int getLenght() const;
+    void clear();                     // Limpa a lista
+    void print(Ordem1 ordem = Ordem1::B_PRAFRENTE) const;  // Imprime a lista na ordem especificada
 
-    void clear();
-    void print(Ordem1 ordem = Ordem1::B_PRAFRENTE) const;
-
-    const NodeBaixa * busca(Processos* processo) const;
-    bool insert(Processos* processo);
-    Processos* remove();
+    const NodeBaixa * busca(Processos* processo) const;  // Busca um processo na lista
+    bool insert(Processos* processo);                    // Insere um processo na lista
+    Processos* remove();                                 // Remove um processo da lista
 
 };
 
