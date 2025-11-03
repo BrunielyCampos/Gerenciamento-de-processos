@@ -1,36 +1,47 @@
-#ifndef _PROCESSOS_H_
-#define _PROCESSOS_H_
+#ifndef PROCESSOS_H
+#define PROCESSOS_H
 
-#include "Pessoa.h"
 #include <string>
+#include <random>
 
-using namespace std;
-
-enum PrioridadeProcessos{ALTA, MEDIA, BAIXA};
-
-class Processos {
-    private:
-    int idProcesso;
-    int data, hora;
-    string assunto;
-    
-
-    public:
-    Processos();
-
-    int IdProcessso (int idProcesso) const;
-    int Data () const;
-    int Hora () const;
-    string Assunto () const; //confirmar se precisa de todos os gets
-    int DistribuirPrioridade (enum PrioridadeProcessos()); //recebe alguma referência do poteiro da pilha
-    int DistribuirProcessos();
-
-    void abrirProcesso(); //cria processos
-
-    void imprimir() const;
-
+enum PrioridadeProcessos {
+    BAIXA,
+    MEDIA,
+    ALTA
 };
 
+class Processos {
+private:
+    // --- ATRIBUTOS PRIVADOS ---
+    int id;
+    std::string dataAbertura;
+    std::string horaAbertura;
+    PrioridadeProcessos prioridade;
+    std::string assunto;
 
+    // --- MOTOR ESTÁTICO COMPARTILHADO ---
+    static std::mt19937 engine;
 
-#endif
+    // --- MÉTODOS PRIVADOS AUXILIARES ---
+    int gerarIdUnico();
+    std::string gerarDataAleatoria();
+    std::string gerarHoraAleatoria();
+
+public:
+    // --- MÉTODOS PÚBLICOS ---
+
+    // Construtor que monta o objeto.
+    Processos();
+    
+    // Getters para permitir a leitura segura dos dados.
+    int IdProcessos() const;
+    PrioridadeProcessos getPrioridade() const;
+
+    // Setter para permitir a alteração segura da prioridade.
+    void setPrioridade(PrioridadeProcessos p);
+
+    // Método para exibir as informações do processo.
+    void imprimir() const;
+};
+
+#endif // PROCESSOS_H

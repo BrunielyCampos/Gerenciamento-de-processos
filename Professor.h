@@ -4,24 +4,25 @@
 #include <string>
 #include "Pessoa.h"
 
+using namespace std;
+
 enum AtuacaoProfessor{
-    INFORMÁTICA, ADMINISTRAÇÃO, PROPEDÊUTICA, QUÍMICA
+    P_INFORMATICA, P_ADMINISTRACAO, P_PROPEDEUTICA, P_QUIMICA
 };
 
 class Professor : public Pessoa {
     private:
-
-       enum AtuacaoProfessor especialidade;
+        AtuacaoProfessor especialidade;  
 
     public:
+        Professor();
 
-    Professor();
-    
-    int Especialidade(AtuacaoProfessor especialidade) const;
+        int Especialidade();
 
-    void setEspecialidade(string especialidade);
+        string ListaNomeProf();
 
-    
+        string DefEspecialidade();
+
+        void ImprimirProfessor();
 };
-
 #endif

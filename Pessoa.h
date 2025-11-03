@@ -8,24 +8,15 @@ using namespace std;
 class Pessoa{
 
 private:
-    double numMatricula;
-    string nome;
+    int numMatricula;
     string cpf;
     
 public:
     Pessoa();
-    Pessoa(double numMatricula, string nome, string cpf);
+    Pessoa(int numMatricula, string cpf);
 
-    double gerarNumMatricula(double numMatricula) const;
-    string Nome(string nome) const;
-    string Cpf(string cpf) const;
-
-    void imprimir();
-
-    // void setnumMatricula(double numMatricula);
-    // void setNome(string nome);
-    // void setCpf(string cpf);
-    
+    int GerarNumMatricula();
+    string GerarCpf();
 };
 
 #endif
